@@ -1,0 +1,92 @@
+<!-- Registration Form Template -->
+<form class="registration-form" data-event-id="">
+	<!-- Выбор даты (отображается только если несколько дат) -->
+	<div class="form__group form__group--date-select" style="display: none;">
+		<label class="form__label">
+			Выберите дату мероприятия *
+		</label>
+		<div class="form__date-options">
+			<!-- Даты будут добавлены динамически -->
+		</div>
+		<span class="form__error"></span>
+	</div>
+
+	<div class="form__group">
+		<label for="name" class="form__label">
+			Имя и Фамилия *
+		</label>
+		<input type="text" name="name" class="form__input" required placeholder="Иван Иванов" />
+		<span class="form__error"></span>
+	</div>
+
+	<div class="form__group">
+		<label for="establishment" class="form__label">
+			Название заведения, в котором Вы работаете
+		</label>
+		<input type="text" name="establishment" class="form__input"
+			placeholder="Например: Beijing Hotel Minsk или ООО «КомплексБарБел»" />
+		<span class="form__error"></span>
+	</div>
+
+	<div class="form__group">
+		<label for="position" class="form__label">
+			Должность
+		</label>
+		<input type="text" name="position" class="form__input" placeholder="Бар-менеджер" />
+		<span class="form__error"></span>
+	</div>
+
+	<div class="form__group">
+		<label for="phone" class="form__label">
+			Телефон *
+		</label>
+		<input type="tel" name="phone" class="form__input" required placeholder="+375 (44) 000-00-00" />
+		<span class="form__error"></span>
+	</div>
+
+	<div class="form__group">
+		<label for="email" class="form__label">
+			Email *
+		</label>
+		<input type="email" name="email" class="form__input" required placeholder="complexbar@gmail.com" />
+		<span class="form__error"></span>
+	</div>
+
+	<!-- Honeypot field - скрыто от пользователей, но видимо для ботов -->
+	<div class="form__group" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"
+		aria-hidden="true">
+		<label for="website">Website</label>
+		<input type="text" name="website" tabindex="-1" autocomplete="off" />
+	</div>
+
+	<div class="form__group form__group--checkbox">
+		<label class="form__checkbox">
+			<input type="checkbox" name="consent" required />
+			<span class="form__checkbox-text">
+				Я согласен на обработку персональных данных
+			</span>
+		</label>
+		<span class="form__error"></span>
+	</div>
+
+	<button type="submit" class="form__submit">
+		<span class="form__submit-text">Зарегистрироваться</span>
+		<span class="form__submit-loader"></span>
+	</button>
+
+	<div class="form__message form__message--success">
+		<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+			<polyline points="20 6 9 17 4 12"></polyline>
+		</svg>
+		<span>Регистрация успешно оформлена!</span>
+	</div>
+
+	<div class="form__message form__message--error">
+		<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+			<circle cx="12" cy="12" r="10"></circle>
+			<line x1="15" y1="9" x2="9" y2="15"></line>
+			<line x1="9" y1="9" x2="15" y2="15"></line>
+		</svg>
+		<span>Не удалось отправить заявку. Попробуйте ещё раз.</span>
+	</div>
+</form>
