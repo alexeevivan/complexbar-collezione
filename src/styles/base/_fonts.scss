@@ -1,0 +1,43 @@
+@font-face {
+	font-family: 'GTWalsheim Pro';
+	src: url("../assets/fonts/GTWalsheim/GTWalsheimPro-Thin.woff2") format("woff2"),
+		url("../assets/fonts/GTWalsheim/GTWalsheimPro-Thin.woff") format("woff");
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GTWalsheim Pro';
+	src: url("../assets/fonts/GTWalsheim/GTWalsheimPro-UltraLight.woff2") format("woff2"),
+		url("../assets/fonts/GTWalsheim/GTWalsheimPro-UltraLight.woff") format("woff");
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GTWalsheim Pro';
+	src: url("../assets/fonts/GTWalsheim/GTWalsheimPro-Light.woff2") format("woff2"),
+		url("../assets/fonts/GTWalsheim/GTWalsheimPro-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'GTWalsheim Pro';
+	src: url("../assets/fonts/GTWalsheim/GTWalsheimPro-Black.woff2") format("woff2"),
+		url("../assets/fonts/GTWalsheim/GTWalsheimPro-Black.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Futura PT';
+	src: url("../assets/fonts/Futura PT/futura-pt-light.woff2") format("woff2"),
+		url("../assets/fonts/Futura PT/futura-pt-light.woff") format("woff");
+	font-style: normal;
+	font-display: swap;
+}

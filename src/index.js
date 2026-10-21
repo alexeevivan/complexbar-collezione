@@ -1,6 +1,7 @@
 import './styles/main.scss';
 import { initRegistrationForm } from './js/registration-form.js';
 import { initCalendarSlider } from './js/calendar-slider.js';
+import './js/calendar-page.js';
 
 // -- Slider
 
@@ -60,7 +61,28 @@ $('.hidden-content').on('click', function (e) {
 });
 
 // -- Initialize Registration Form
-$(document).ready(function() {
+$(document).ready(function () {
 	initRegistrationForm();
 	initCalendarSlider();
+});
+
+// -- Burger
+
+document.addEventListener('DOMContentLoaded', function () {
+	var burger = document.querySelector('.burger'),
+		header = document.querySelector('.header'),
+		body = document.body;
+
+	if (!burger || !header) {
+		console.error('burger/header не найдены', burger, header);
+		return;
+	}
+
+	burger.addEventListener('click', function () {
+		var isOpen = header.classList.toggle('menu-opened');
+		burger.classList.toggle('active', isOpen);
+		burger.classList.toggle('inverted', isOpen);
+		body.classList.toggle('fixed', isOpen);
+		console.log('menu open:', isOpen, burger.className);
+	});
 });

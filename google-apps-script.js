@@ -7,296 +7,296 @@
 
 // КОНФИГУРАЦИЯ
 const CONFIG = {
-  // ID Google Sheets таблицы (из URL)
-  SPREADSHEET_ID: '1GNOWlGoM5sbrKSvopmLZ4xetjxJQqwD09a6fESGzWnU',
-  
-  // Название листа в таблице
-  SHEET_NAME: 'Registrations',
-  
-  // Настройки защиты от спама
-  RATE_LIMIT: {
-    MAX_REQUESTS_PER_MINUTE: 10,
-    CACHE_DURATION: 60 // секунды
-  },
-  
-  // Разрешенные мероприятия
-  ALLOWED_EVENTS: [
-    'october-event-1',
-    'october-event-2',
-    'november-event-1',
-    'november-event-2',
-    'december-event-1',
-    'december-event-2'
-  ]
+	// ID Google Sheets таблицы (из URL)
+	SPREADSHEET_ID: '1GNOWlGoM5sbrKSvopmLZ4xetjxJQqwD09a6fESGzWnU',
+
+	// Название листа в таблице
+	SHEET_NAME: 'Registrations',
+
+	// Настройки защиты от спама
+	RATE_LIMIT: {
+		MAX_REQUESTS_PER_MINUTE: 10,
+		CACHE_DURATION: 60 // секунды
+	},
+
+	// Разрешенные мероприятия
+	ALLOWED_EVENTS: [
+		'october-event-1',
+		'october-event-2',
+		'november-event-1',
+		'november-event-2',
+		'december-event-1',
+		'december-event-2'
+	]
 };
 
 /**
  * Обработчик POST запросов
  */
 function doPost(e) {
-  try {
-    Logger.log('doPost called');
-    
-    // CORS Headers
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Content-Type': 'application/json'
-    };
+	try {
+		Logger.log('doPost called');
 
-    // Парсинг данных
-    let data;
-    try {
-      Logger.log('Parsing postData.contents: ' + e.postData.contents);
-      data = JSON.parse(e.postData.contents);
-      Logger.log('Parsed data: ' + JSON.stringify(data));
-    } catch (parseError) {
-      Logger.log('Parse error: ' + parseError.toString());
-      return createResponse(false, 'Неверный формат данных', headers);
-    }
+		// CORS Headers
+		const headers = {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'POST, OPTIONS',
+			'Access-Control-Allow-Headers': 'Content-Type',
+			'Content-Type': 'application/json'
+		};
 
-    // Проверка rate limiting
-    Logger.log('Checking rate limit...');
-    if (!checkRateLimit()) {
-      return createResponse(false, 'Слишком много запросов. Попробуйте позже.', headers);
-    }
+		// Парсинг данных
+		let data;
+		try {
+			Logger.log('Parsing postData.contents: ' + e.postData.contents);
+			data = JSON.parse(e.postData.contents);
+			Logger.log('Parsed data: ' + JSON.stringify(data));
+		} catch (parseError) {
+			Logger.log('Parse error: ' + parseError.toString());
+			return createResponse(false, 'Неверный формат данных', headers);
+		}
 
-    // Валидация данных
-    Logger.log('Validating data...');
-    const validation = validateData(data);
-    if (!validation.isValid) {
-      Logger.log('Validation failed: ' + validation.message);
-      return createResponse(false, validation.message, headers);
-    }
-    Logger.log('Validation passed');
+		// Проверка rate limiting
+		Logger.log('Checking rate limit...');
+		if (!checkRateLimit()) {
+			return createResponse(false, 'Слишком много запросов. Попробуйте позже.', headers);
+		}
 
-    // Проверка разрешенного мероприятия
-    Logger.log('Checking allowed events...');
-    if (!CONFIG.ALLOWED_EVENTS.includes(data.eventId)) {
-      Logger.log('Event not allowed: ' + data.eventId);
-      return createResponse(false, 'Мероприятие не найдено', headers);
-    }
-    Logger.log('Event allowed');
+		// Валидация данных
+		Logger.log('Validating data...');
+		const validation = validateData(data);
+		if (!validation.isValid) {
+			Logger.log('Validation failed: ' + validation.message);
+			return createResponse(false, validation.message, headers);
+		}
+		Logger.log('Validation passed');
 
-    // Запись в Google Sheets
-    Logger.log('Calling saveToSheet with data: ' + JSON.stringify(data));
-    const result = saveToSheet(data);
-    Logger.log('saveToSheet result: ' + JSON.stringify(result));
-    
-    // Проверка на дубликат
-    if (!result.success) {
-      return createResponse(false, result.message, headers);
-    }
+		// Проверка разрешенного мероприятия
+		Logger.log('Checking allowed events...');
+		if (!CONFIG.ALLOWED_EVENTS.includes(data.eventId)) {
+			Logger.log('Event not allowed: ' + data.eventId);
+			return createResponse(false, 'Мероприятие не найдено', headers);
+		}
+		Logger.log('Event allowed');
 
-    return createResponse(
-      true, 
-      'Регистрация успешно оформлена', 
-      headers,
-      { registrationId: result.registrationId }
-    );
+		// Запись в Google Sheets
+		Logger.log('Calling saveToSheet with data: ' + JSON.stringify(data));
+		const result = saveToSheet(data);
+		Logger.log('saveToSheet result: ' + JSON.stringify(result));
 
-  } catch (error) {
-    Logger.log('Error in doPost: ' + error.toString());
-    Logger.log('Error stack: ' + error.stack);
-    
-    return createResponse(
-      false, 
-      'Произошла ошибка при обработке заявки. Попробуйте позже.', 
-      {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Content-Type': 'application/json'
-      }
-    );
-  }
+		// Проверка на дубликат
+		if (!result.success) {
+			return createResponse(false, result.message, headers);
+		}
+
+		return createResponse(
+			true,
+			'Регистрация успешно оформлена',
+			headers,
+			{ registrationId: result.registrationId }
+		);
+
+	} catch (error) {
+		Logger.log('Error in doPost: ' + error.toString());
+		Logger.log('Error stack: ' + error.stack);
+
+		return createResponse(
+			false,
+			'Произошла ошибка при обработке заявки. Попробуйте позже.',
+			{
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'POST, OPTIONS',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Content-Type': 'application/json'
+			}
+		);
+	}
 }
 
 /**
  * Обработчик OPTIONS запросов (CORS preflight)
  */
 function doOptions(e) {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok' }))
-    .setMimeType(ContentService.MimeType.JSON);
+	return ContentService
+		.createTextOutput(JSON.stringify({ status: 'ok' }))
+		.setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
  * Валидация входных данных
  */
 function validateData(data) {
-  // Проверка обязательных полей
-  if (!data || typeof data !== 'object') {
-    return { isValid: false, message: 'Неверный формат данных' };
-  }
+	// Проверка обязательных полей
+	if (!data || typeof data !== 'object') {
+		return { isValid: false, message: 'Неверный формат данных' };
+	}
 
-  // Honeypot проверка - если поле website заполнено, это бот
-  if (data.website && typeof data.website === 'string' && data.website.trim() !== '') {
-    Logger.log('Bot detected via honeypot field');
-    return { isValid: false, message: 'Ошибка валидации данных' };
-  }
+	// Honeypot проверка - если поле website заполнено, это бот
+	if (data.website && typeof data.website === 'string' && data.website.trim() !== '') {
+		Logger.log('Bot detected via honeypot field');
+		return { isValid: false, message: 'Ошибка валидации данных' };
+	}
 
-  // Проверка обязательных полей
-  if (!data.eventId || typeof data.eventId !== 'string') {
-    return { isValid: false, message: 'Event ID обязателен' };
-  }
+	// Проверка обязательных полей
+	if (!data.eventId || typeof data.eventId !== 'string') {
+		return { isValid: false, message: 'Event ID обязателен' };
+	}
 
-  if (!data.name || typeof data.name !== 'string' || data.name.trim().length < 2) {
-    return { isValid: false, message: 'Укажите имя и фамилию' };
-  }
+	if (!data.name || typeof data.name !== 'string' || data.name.trim().length < 2) {
+		return { isValid: false, message: 'Укажите имя и фамилию' };
+	}
 
-  if (!data.phone || typeof data.phone !== 'string' || data.phone.trim().length < 10) {
-    return { isValid: false, message: 'Укажите корректный телефон' };
-  }
+	if (!data.phone || typeof data.phone !== 'string' || data.phone.trim().length < 10) {
+		return { isValid: false, message: 'Укажите корректный телефон' };
+	}
 
-  if (!data.email || typeof data.email !== 'string' || !isValidEmail(data.email)) {
-    return { isValid: false, message: 'Укажите корректный email' };
-  }
+	if (!data.email || typeof data.email !== 'string' || !isValidEmail(data.email)) {
+		return { isValid: false, message: 'Укажите корректный email' };
+	}
 
-  // Проверка длины полей
-  if (data.name.length > 100) {
-    return { isValid: false, message: 'Имя слишком длинное' };
-  }
+	// Проверка длины полей
+	if (data.name.length > 100) {
+		return { isValid: false, message: 'Имя слишком длинное' };
+	}
 
-  if (data.establishment && data.establishment.length > 200) {
-    return { isValid: false, message: 'Название заведения слишком длинное' };
-  }
+	if (data.establishment && data.establishment.length > 200) {
+		return { isValid: false, message: 'Название заведения слишком длинное' };
+	}
 
-  if (data.position && data.position.length > 100) {
-    return { isValid: false, message: 'Название должности слишком длинное' };
-  }
+	if (data.position && data.position.length > 100) {
+		return { isValid: false, message: 'Название должности слишком длинное' };
+	}
 
-  return { isValid: true };
+	return { isValid: true };
 }
 
 /**
  * Проверка формата email
  */
 function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
 }
 
 /**
  * Защита от спама - Rate Limiting
  */
 function checkRateLimit() {
-  const cache = CacheService.getScriptCache();
-  const key = 'rate_limit_count';
-  
-  const currentCount = cache.get(key);
-  
-  if (currentCount === null) {
-    cache.put(key, '1', CONFIG.RATE_LIMIT.CACHE_DURATION);
-    return true;
-  }
-  
-  const count = parseInt(currentCount);
-  
-  if (count >= CONFIG.RATE_LIMIT.MAX_REQUESTS_PER_MINUTE) {
-    return false;
-  }
-  
-  cache.put(key, String(count + 1), CONFIG.RATE_LIMIT.CACHE_DURATION);
-  return true;
+	const cache = CacheService.getScriptCache();
+	const key = 'rate_limit_count';
+
+	const currentCount = cache.get(key);
+
+	if (currentCount === null) {
+		cache.put(key, '1', CONFIG.RATE_LIMIT.CACHE_DURATION);
+		return true;
+	}
+
+	const count = parseInt(currentCount);
+
+	if (count >= CONFIG.RATE_LIMIT.MAX_REQUESTS_PER_MINUTE) {
+		return false;
+	}
+
+	cache.put(key, String(count + 1), CONFIG.RATE_LIMIT.CACHE_DURATION);
+	return true;
 }
 
 /**
  * Генерация уникального ID регистрации
  */
 function generateRegistrationId() {
-  const timestamp = new Date().getTime();
-  const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-  return `REG-${timestamp}-${random}`;
+	const timestamp = new Date().getTime();
+	const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+	return `REG-${timestamp}-${random}`;
 }
 
 /**
  * Сохранение данных в Google Sheets
  */
 function saveToSheet(data) {
-  try {
-    Logger.log('saveToSheet called with data: ' + JSON.stringify(data));
-    
-    // Проверка данных
-    if (!data || typeof data !== 'object') {
-      Logger.log('Invalid data object');
-      return {
-        success: false,
-        message: 'Неверный формат данных'
-      };
-    }
-    
-    Logger.log('Opening spreadsheet: ' + CONFIG.SPREADSHEET_ID);
-    const spreadsheet = SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID);
-    
-    if (!spreadsheet) {
-      Logger.log('Spreadsheet not found');
-      return {
-        success: false,
-        message: 'Таблица не найдена'
-      };
-    }
-    
-    Logger.log('Getting sheet: ' + CONFIG.SHEET_NAME);
-    const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
-    
-    if (!sheet) {
-      Logger.log('Sheet not found: ' + CONFIG.SHEET_NAME);
-      return {
-        success: false,
-        message: 'Лист "' + CONFIG.SHEET_NAME + '" не найден. Создайте лист с таким названием.'
-      };
-    }
+	try {
+		Logger.log('saveToSheet called with data: ' + JSON.stringify(data));
 
-    Logger.log('Sheet found, checking duplicates...');
-    // Проверка дубликатов - только для этого мероприятия
-    const isDuplicate = checkDuplicateRegistration(sheet, data.eventId, data.phone, data.email);
-    if (isDuplicate.found) {
-      Logger.log('Duplicate registration attempt: ' + isDuplicate.message);
-      return {
-        success: false,
-        message: 'Участник с введенными выше данными уже зарегистрирован'
-      };
-    }
+		// Проверка данных
+		if (!data || typeof data !== 'object') {
+			Logger.log('Invalid data object');
+			return {
+				success: false,
+				message: 'Неверный формат данных'
+			};
+		}
 
-    const registrationId = generateRegistrationId();
-    const timestamp = new Date();
-    
-    Logger.log('Creating row for registration: ' + registrationId);
+		Logger.log('Opening spreadsheet: ' + CONFIG.SPREADSHEET_ID);
+		const spreadsheet = SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID);
 
-    // Подготовка строки для записи
-    const row = [
-      registrationId,                                           // Registration ID
-      timestamp,                                                // Registration Date
-      data.eventId,                                             // Event ID
-      data.eventDate || '',                                     // Event Date (дата проведения мероприятия)
-      data.name.trim(),                                         // Name
-      data.establishment ? data.establishment.trim() : '',      // Establishment
-      data.position ? data.position.trim() : '',                // Position
-      data.phone.trim(),                                        // Phone
-      data.email.trim(),                                        // Email
-      'Новая'                                                   // Status
-    ];
+		if (!spreadsheet) {
+			Logger.log('Spreadsheet not found');
+			return {
+				success: false,
+				message: 'Таблица не найдена'
+			};
+		}
 
-    // Добавление строки в таблицу
-    sheet.appendRow(row);
+		Logger.log('Getting sheet: ' + CONFIG.SHEET_NAME);
+		const sheet = spreadsheet.getSheetByName(CONFIG.SHEET_NAME);
 
-    Logger.log('Registration saved: ' + registrationId);
-    
-    return {
-      success: true,
-      registrationId: registrationId
-    };
+		if (!sheet) {
+			Logger.log('Sheet not found: ' + CONFIG.SHEET_NAME);
+			return {
+				success: false,
+				message: 'Лист "' + CONFIG.SHEET_NAME + '" не найден. Создайте лист с таким названием.'
+			};
+		}
 
-  } catch (error) {
-    Logger.log('Error in saveToSheet: ' + error.toString());
-    Logger.log('Error stack: ' + error.stack);
-    return {
-      success: false,
-      message: 'Ошибка сохранения: ' + error.toString()
-    };
-  }
+		Logger.log('Sheet found, checking duplicates...');
+		// Проверка дубликатов - только для этого мероприятия
+		const isDuplicate = checkDuplicateRegistration(sheet, data.eventId, data.phone, data.email);
+		if (isDuplicate.found) {
+			Logger.log('Duplicate registration attempt: ' + isDuplicate.message);
+			return {
+				success: false,
+				message: 'Участник с введенными выше данными уже зарегистрирован'
+			};
+		}
+
+		const registrationId = generateRegistrationId();
+		const timestamp = new Date();
+
+		Logger.log('Creating row for registration: ' + registrationId);
+
+		// Подготовка строки для записи
+		const row = [
+			registrationId,                                           // Registration ID
+			timestamp,                                                // Registration Date
+			data.eventId,                                             // Event ID
+			data.eventDate || '',                                     // Event Date (дата проведения мероприятия)
+			data.name.trim(),                                         // Name
+			data.establishment ? data.establishment.trim() : '',      // Establishment
+			data.position ? data.position.trim() : '',                // Position
+			data.phone.trim(),                                        // Phone
+			data.email.trim(),                                        // Email
+			'Новая'                                                   // Status
+		];
+
+		// Добавление строки в таблицу
+		sheet.appendRow(row);
+
+		Logger.log('Registration saved: ' + registrationId);
+
+		return {
+			success: true,
+			registrationId: registrationId
+		};
+
+	} catch (error) {
+		Logger.log('Error in saveToSheet: ' + error.toString());
+		Logger.log('Error stack: ' + error.stack);
+		return {
+			success: false,
+			message: 'Ошибка сохранения: ' + error.toString()
+		};
+	}
 }
 
 /**
@@ -304,113 +304,113 @@ function saveToSheet(data) {
  * Проверяет только для конкретного мероприятия
  */
 function checkDuplicateRegistration(sheet, eventId, phone, email) {
-  try {
-    const data = sheet.getDataRange().getValues();
-    
-    // Пропускаем заголовок (первая строка)
-    for (let i = 1; i < data.length; i++) {
-      const row = data[i];
-      const rowEventId = row[2];     // Event ID в колонке C (индекс 2)
-      const rowPhone = row[6];       // Phone в колонке G (индекс 6)
-      const rowEmail = row[7];       // Email в колонке H (индекс 7)
-      
-      // Проверяем только для текущего мероприятия
-      if (rowEventId === eventId) {
-        // Нормализуем телефон (удаляем все кроме цифр)
-        const normalizedRowPhone = String(rowPhone).replace(/\D/g, '');
-        const normalizedPhone = String(phone).replace(/\D/g, '');
-        
-        // Проверка по телефону
-        if (normalizedRowPhone === normalizedPhone && normalizedPhone.length >= 10) {
-          return { 
-            found: true, 
-            reason: 'phone',
-            message: 'Этот номер телефона уже зарегистрирован на данное мероприятие'
-          };
-        }
-        
-        // Проверка по email (case-insensitive)
-        if (String(rowEmail).toLowerCase() === String(email).toLowerCase()) {
-          return { 
-            found: true, 
-            reason: 'email',
-            message: 'Этот email уже зарегистрирован на данное мероприятие'
-          };
-        }
-      }
-    }
-    
-    return { found: false };
-    
-  } catch (error) {
-    Logger.log('Error in checkDuplicateRegistration: ' + error.toString());
-    // В случае ошибки проверки - разрешаем регистрацию
-    return { found: false };
-  }
+	try {
+		const data = sheet.getDataRange().getValues();
+
+		// Пропускаем заголовок (первая строка)
+		for (let i = 1; i < data.length; i++) {
+			const row = data[i];
+			const rowEventId = row[2];     // Event ID в колонке C (индекс 2)
+			const rowPhone = row[7];       // Phone в колонке G (индекс 6)
+			const rowEmail = row[8];       // Email в колонке H (индекс 7)
+
+			// Проверяем только для текущего мероприятия
+			if (rowEventId === eventId) {
+				// Нормализуем телефон (удаляем все кроме цифр)
+				const normalizedRowPhone = String(rowPhone).replace(/\D/g, '');
+				const normalizedPhone = String(phone).replace(/\D/g, '');
+
+				// Проверка по телефону
+				if (normalizedRowPhone === normalizedPhone && normalizedPhone.length >= 10) {
+					return {
+						found: true,
+						reason: 'phone',
+						message: 'Этот номер телефона уже зарегистрирован на данное мероприятие'
+					};
+				}
+
+				// Проверка по email (case-insensitive)
+				if (String(rowEmail).toLowerCase() === String(email).toLowerCase()) {
+					return {
+						found: true,
+						reason: 'email',
+						message: 'Этот email уже зарегистрирован на данное мероприятие'
+					};
+				}
+			}
+		}
+
+		return { found: false };
+
+	} catch (error) {
+		Logger.log('Error in checkDuplicateRegistration: ' + error.toString());
+		// В случае ошибки проверки - разрешаем регистрацию
+		return { found: false };
+	}
 }
 
 /**
  * Создание JSON ответа
  */
 function createResponse(success, message, headers, additionalData = {}) {
-  const response = {
-    success: success,
-    message: message,
-    timestamp: new Date().toISOString(),
-    ...additionalData
-  };
+	const response = {
+		success: success,
+		message: message,
+		timestamp: new Date().toISOString(),
+		...additionalData
+	};
 
-  return ContentService
-    .createTextOutput(JSON.stringify(response))
-    .setMimeType(ContentService.MimeType.JSON);
+	return ContentService
+		.createTextOutput(JSON.stringify(response))
+		.setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
  * Тестовая функция для проверки работы скрипта
  */
 function testRegistration() {
-  const testData = {
-    eventId: 'october-event-1',
-    eventDate: '27.10.2026',
-    name: 'Иван Иванов',
-    establishment: 'Test Bar',
-    position: 'Бармен',
-    phone: '+7 (999) 123-45-67',
-    email: 'test@example.com',
-    website: '' // Honeypot пустое
-  };
+	const testData = {
+		eventId: 'october-event-1',
+		eventDate: '27.10.2026',
+		name: 'Иван Иванов',
+		establishment: 'Test Bar',
+		position: 'Бармен',
+		phone: '+7 (999) 123-45-67',
+		email: 'test@example.com',
+		website: '' // Honeypot пустое
+	};
 
-  // Просто вызываем saveToSheet напрямую для теста
-  Logger.log('Testing with data: ' + JSON.stringify(testData));
-  const result = saveToSheet(testData);
-  Logger.log('Test result: ' + JSON.stringify(result));
-  
-  return result;
+	// Просто вызываем saveToSheet напрямую для теста
+	Logger.log('Testing with data: ' + JSON.stringify(testData));
+	const result = saveToSheet(testData);
+	Logger.log('Test result: ' + JSON.stringify(result));
+
+	return result;
 }
 
 /**
  * Тест полного потока через doPost
  */
 function testRegistrationFull() {
-  const testData = {
-    eventId: 'october-event-1',
-    eventDate: '27.10.2026',
-    name: 'Иван Иванов',
-    establishment: 'Test Bar',
-    position: 'Бармен',
-    phone: '+7 (999) 123-45-67',
-    email: 'test@example.com',
-    website: ''
-  };
+	const testData = {
+		eventId: 'october-event-1',
+		eventDate: '27.10.2026',
+		name: 'Иван Иванов',
+		establishment: 'Test Bar',
+		position: 'Бармен',
+		phone: '+7 (999) 123-45-67',
+		email: 'test@example.com',
+		website: ''
+	};
 
-  const mockEvent = {
-    postData: {
-      contents: JSON.stringify(testData)
-    }
-  };
+	const mockEvent = {
+		postData: {
+			contents: JSON.stringify(testData)
+		}
+	};
 
-  const result = doPost(mockEvent);
-  Logger.log('Full test result: ' + result.getContent());
-  
-  return result;
+	const result = doPost(mockEvent);
+	Logger.log('Full test result: ' + result.getContent());
+
+	return result;
 }

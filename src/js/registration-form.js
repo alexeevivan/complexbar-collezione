@@ -31,14 +31,14 @@ class RegistrationForm {
 	init() {
 		// Инициализация выбора даты
 		this.initDateSelection();
-		
+
 		this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-		
+
 		// Real-time validation
 		this.elements.email.addEventListener('blur', () => this.validateEmail());
 		this.elements.phone.addEventListener('blur', () => this.validatePhone());
 		this.elements.name.addEventListener('blur', () => this.validateName());
-		
+
 		// Проверка cooldown при загрузке
 		this.checkCooldown();
 	}
@@ -49,7 +49,7 @@ class RegistrationForm {
 		if (!userBlock) return;
 
 		const courseDates = Array.from(userBlock.querySelectorAll('.user__course-date'));
-		
+
 		if (courseDates.length === 0) {
 			// Нет дат - скрыть блок выбора
 			this.elements.dateGroup.style.display = 'none';
@@ -70,14 +70,14 @@ class RegistrationForm {
 		courseDates.forEach((dateElement, index) => {
 			const date = dateElement.textContent.trim();
 			const radioId = `date-${this.eventId}-${index}`;
-			
+
 			const label = document.createElement('label');
 			label.className = 'form__radio';
 			label.innerHTML = `
 				<input type="radio" name="event-date-${this.eventId}" value="${date}" id="${radioId}" ${index === 0 ? 'checked' : ''} required />
 				<span class="form__radio-text">${date}</span>
 			`;
-			
+
 			this.elements.dateOptions.appendChild(label);
 		});
 
@@ -97,7 +97,7 @@ class RegistrationForm {
 		if (cooldownEnd) {
 			const now = Date.now();
 			const remainingTime = parseInt(cooldownEnd) - now;
-			
+
 			if (remainingTime > 0) {
 				this.setCooldown(Math.ceil(remainingTime / 1000));
 			}
@@ -107,7 +107,7 @@ class RegistrationForm {
 	setCooldown(seconds) {
 		this.elements.submitBtn.disabled = true;
 		const originalText = this.elements.submitBtn.querySelector('.form__submit-text').textContent;
-		
+
 		const countdown = setInterval(() => {
 			if (seconds <= 0) {
 				clearInterval(countdown);
@@ -115,7 +115,7 @@ class RegistrationForm {
 				this.elements.submitBtn.querySelector('.form__submit-text').textContent = originalText;
 				localStorage.removeItem(this.cooldownKey);
 			} else {
-				this.elements.submitBtn.querySelector('.form__submit-text').textContent = 
+				this.elements.submitBtn.querySelector('.form__submit-text').textContent =
 					`Подождите ${seconds} сек`;
 				seconds--;
 			}
@@ -181,7 +181,7 @@ class RegistrationForm {
 
 	validateConsent() {
 		const errorElement = this.elements.consent.closest('.form__group').querySelector('.form__error');
-		
+
 		if (!this.elements.consent.checked) {
 			this.showError(this.elements.consent, errorElement, 'Необходимо согласие на обработку данных');
 			return false;
@@ -247,7 +247,7 @@ class RegistrationForm {
 		}
 
 		// Check if Apps Script URL is configured
-		if (!this.eventConfig.googleAppsScriptUrl || 
+		if (!this.eventConfig.googleAppsScriptUrl ||
 			this.eventConfig.googleAppsScriptUrl === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
 			console.error('Google Apps Script URL не настроен');
 			this.showErrorMessage('Регистрация временно недоступна. Обратитесь к администратору.');
@@ -281,7 +281,7 @@ class RegistrationForm {
 			const response = await fetch(this.eventConfig.googleAppsScriptUrl, {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
+					'Content-Type': 'text/plain;charset=utf-8', // "простой" запрос, без preflight
 				},
 				body: JSON.stringify(data)
 			});
@@ -296,7 +296,7 @@ class RegistrationForm {
 			if (result.success) {
 				this.showSuccessMessage(result.message || 'Регистрация успешно оформлена!');
 				this.resetForm();
-				
+
 				// Установка cooldown - 60 секунд
 				const cooldownDuration = 60;
 				const cooldownEnd = Date.now() + (cooldownDuration * 1000);
@@ -326,7 +326,8 @@ class RegistrationForm {
 			this.elements.submitBtn.disabled = true;
 		} else {
 			this.elements.submitBtn.classList.remove('is-loading');
-			this.elements.submitBtn.disabled = false;
+			const cooldownEnd = parseInt(localStorage.getItem(this.cooldownKey) || '0');
+			this.elements.submitBtn.disabled = cooldownEnd > Date.now();
 		}
 	}
 
@@ -336,7 +337,7 @@ class RegistrationForm {
 			messageText.textContent = message;
 		}
 		this.elements.successMessage.classList.add('is-visible');
-		
+
 		// Scroll to message
 		this.elements.successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 	}
@@ -347,19 +348,19 @@ class RegistrationForm {
 			messageText.textContent = message;
 		}
 		this.elements.errorMessage.classList.add('is-visible');
-		
+
 		// Scroll to message
 		this.elements.errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 	}
 
 	resetForm() {
 		this.form.reset();
-		
+
 		// Remove all error states
 		this.form.querySelectorAll('.has-error').forEach(el => {
 			el.classList.remove('has-error');
 		});
-		
+
 		this.form.querySelectorAll('.form__error.is-visible').forEach(el => {
 			el.classList.remove('is-visible');
 		});

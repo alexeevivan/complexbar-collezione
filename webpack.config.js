@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const posthtml = require('posthtml');
 const posthtmlInclude = require('posthtml-include');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 class PostHtmlIncludePlugin {
 
@@ -26,7 +27,10 @@ class PostHtmlIncludePlugin {
 
 module.exports = {
 	mode: 'development',
-	entry: './src/index.js',
+	entry: {
+		main: './src/index.js',
+		recipes: './src/recipes.js',
+	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'js/[name].[contenthash].js',
@@ -38,32 +42,32 @@ module.exports = {
 			{
 				test: /\.s?css$/i,
 				use: [
-					'style-loader',
+					MiniCssExtractPlugin.loader,
 					'css-loader',
 					'sass-loader',
 				],
 			},
-		{
-			test: /\.html$/i,
-			use: [
-				{
-					loader: 'html-loader',
-					options: {
-						sources: false, // Отключаем автоматическую обработку src/srcset
+			{
+				test: /\.html$/i,
+				use: [
+					{
+						loader: 'html-loader',
+						options: {
+							sources: false, // Отключаем автоматическую обработку src/srcset
+						},
 					},
-				},
-				{
-					loader: 'posthtml-loader',
-					options: {
-						plugins: [
-							require('posthtml-include')({
-								root: path.resolve(__dirname, 'src/html'),
-							}),
-						],
+					{
+						loader: 'posthtml-loader',
+						options: {
+							plugins: [
+								require('posthtml-include')({
+									root: path.resolve(__dirname, 'src/html'),
+								}),
+							],
+						},
 					},
-				},
-			],
-		},
+				],
+			},
 			{
 				test: /\.(svg|png|jpe?g|gif|webp)$/i,
 				type: 'asset/resource',
@@ -71,6 +75,13 @@ module.exports = {
 					filename: 'assets/img/[name][ext]',
 				},
 			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: 'assets/fonts/[name][ext]' // куда сложит шрифты в build
+				}
+			}
 		],
 	},
 
@@ -78,6 +89,12 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/html/index.html',
 			filename: 'index.html',
+			chunks: ['main'],
+		}),
+		new HtmlWebpackPlugin({
+			template: './src/html/classes/calendar.html',
+			filename: 'calendar.html',
+			chunks: ['main', 'recipes'],
 		}),
 		new HtmlWebpackPlugin({
 			template: './src/html/recipes/pd-syrup-recipes.html',
@@ -114,6 +131,9 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/html/recipes/bubbledrops-recipes.html',
 			filename: 'bubbledrops-recipes.html',
+		}),
+		new MiniCssExtractPlugin({
+			filename: 'css/[name].[contenthash].css',
 		}),
 		new PostHtmlIncludePlugin(),
 		new CopyWebpackPlugin({
