@@ -16,6 +16,8 @@ $breakpoint-wide: 1440px;
 				position: relative;
 				margin: calc(var(--index) * 6) 0 0 0;
 				filter: drop-shadow(0px 6px 7px var(--dark-color));
+				// --
+				display: none;
 
 				.slider__wrapper {
 					height: 100%;
@@ -110,9 +112,19 @@ $breakpoint-wide: 1440px;
 				}
 			}
 
+			// --
+			.hidden-content {
+				display: none;
+			}
+
 			.content {
-				display: flex;
+				display: none;
+				// display: flex;
 				flex-direction: column;
+			}
+
+			.bottom-divider {
+				display: none;
 			}
 
 			.user {
