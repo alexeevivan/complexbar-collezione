@@ -223,7 +223,8 @@
 		align-content: center;
 		position: sticky;
 		top: 0;
-		overflow: clip; // добавить
+		overflow: clip;
+		padding: 2rem 0;
 	}
 
 	.scaler {
@@ -559,7 +560,7 @@
 
 	.content-wrap {
 		z-index: 2;
-		background: linear-gradient(to bottom, var(--main-color), white);
+		background: linear-gradient(to bottom, var(--main-color), #000 62%);
 	}
 }
 
@@ -583,6 +584,7 @@
 		display: grid;
 		place-items: center;
 		min-height: 100vh;
+		background-color: var(--main-color) !important;
 	}
 
 	.content-wrap::before {
@@ -625,8 +627,14 @@
 .course {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
-	padding-block: calc(var(--index) * 5);
+	align-items: center;
+	padding-block: 0;
+
+	// Стили для эффекта наезжания на #interactive-app
+	position: relative;
+	z-index: 2;
+	background-color: var(--black-color); // или цвет вашей страницы
+	min-height: 100vh;
 
 	.course-program {
 		width: 100%;
@@ -648,6 +656,7 @@
 				text-transform: uppercase;
 				font-size: calc(var(--index) * 1.5);
 				font-weight: 300;
+				color: var(--main-color);
 			}
 		}
 
@@ -659,6 +668,24 @@
 			h3,
 			h4 {
 				cursor: pointer;
+				background-color: var(--black-color);
+				color: var(--main-color);
+				border: 1px solid var(--mute);
+				transition: 1s;
+				border-radius: 1rem;
+
+				&:hover {
+					background-color: var(--mute);
+					color: var(--dark-color);
+					border: 1px solid var(--dark-color);
+					transition: 1s;
+				}
+
+				&.opened {
+					background-color: var(--main-color);
+					color: var(--dark-color);
+					border: 1px solid var(--dark-color);
+				}
 			}
 
 			h2,
@@ -674,12 +701,8 @@
 			h1 {
 				padding: calc(var(--index) * 1.25) 24px;
 				font-weight: normal;
-				color: var(--dark-color);
-				background-color: var(--main-color);
 				font-family: "Futura PT", sans-serif;
 				font-size: calc(var(--index) * 1.25);
-				border-radius: 1rem;
-				border: 1px solid var(--dark-color);
 			}
 
 			div,
@@ -689,49 +712,28 @@
 
 			h2 {
 				padding: calc(var(--index) * 1.25) 24px;
-				background-color: var(--main-color);
 				font-size: 1.1rem;
-				color: var(--dark-color);
-				border-radius: 10px;
 				margin: 10px 0 0 0;
 
 				&:first-of-type {
 					margin: 0;
-				}
-
-				&:hover {
-					background-color: #09ab8b;
 				}
 			}
 
 			h3 {
 				padding: calc(var(--index) * 1.25) 24px;
-				background-color: #b94152;
 				font-size: .9rem;
-				color: var(--dark-color);
-				border-radius: 10px;
 				margin: 10px 0 0 0;
 
 				&:first-of-type {
 					margin: 0;
 				}
-
-				&:hover {
-					background-color: #a93142;
-				}
 			}
 
 			h4 {
 				padding: calc(var(--index) * 1.25) 24px;
-				background-color: #ffc25a;
 				font-size: .9rem;
-				color: var(--dark-color);
-				border-radius: 10px;
 				margin: 10px 0 0 0;
-
-				&:hover {
-					background-color: #e0b040;
-				}
 			}
 
 			p {
@@ -746,11 +748,37 @@
 				margin-top: -20px;
 				border-bottom-left-radius: 10px;
 				border-bottom-right-radius: 10px;
+				border: 1px solid var(--black-color);
 			}
 
 			.course-program__item {
 				display: none;
 				margin: 24px 24px 24px 0px;
+			}
+		}
+	}
+}
+
+.footer {
+	&.footer-recipes {
+		padding: var(--index) 0;
+		background-color: var(--black-color);
+
+		.footer__container {
+			.footer__logo {
+				.regular-link {
+					display: none;
+				}
+
+				.recipes-link {
+					display: block;
+				}
+
+				.logo {
+					&.cartel {
+						filter: invert(1);
+					}
+				}
 			}
 		}
 	}

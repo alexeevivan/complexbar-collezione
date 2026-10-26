@@ -16,13 +16,16 @@ $breakpoint-wide: 1440px;
 				position: relative;
 				margin: calc(var(--index) * 6) 0 0 0;
 				filter: drop-shadow(0px 6px 7px var(--dark-color));
-				// --
-				display: none;
+				display: inherit;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 
 				.slider__wrapper {
 					height: 100%;
 					top: unset;
 					border-radius: 30px;
+					display: none;
 
 					.flex__container {
 						display: flex;
@@ -86,7 +89,7 @@ $breakpoint-wide: 1440px;
 				}
 
 				.slider__navi {
-					display: flex;
+					display: none;
 					justify-content: space-around;
 					top: 95%;
 					left: 20%;
@@ -107,6 +110,12 @@ $breakpoint-wide: 1440px;
 					}
 				}
 
+				.swiper {
+					display: block;
+					width: 600px;
+					height: 300px;
+				}
+
 				.flex--piplup .flex__item--left {
 					background: linear-gradient(to bottom, #30214e, #0a0a0c);
 				}
@@ -114,17 +123,17 @@ $breakpoint-wide: 1440px;
 
 			// --
 			.hidden-content {
-				display: none;
+				display: block;
 			}
 
 			.content {
-				display: none;
-				// display: flex;
+				// display: none;
+				display: flex;
 				flex-direction: column;
 			}
 
 			.bottom-divider {
-				display: none;
+				display: flex;
 			}
 
 			.user {

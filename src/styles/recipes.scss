@@ -6,7 +6,9 @@
 @use 'components/_footer';
 @use 'components/_registration-form';
 @use 'components/_recipes';
+@use 'components/_interactive-title';
 
 @use 'responsive/_responsive-header';
 @use 'responsive/_responsive-footer';
 @use 'responsive/_responsive-main';
+@use 'responsive/_responsive-recipes';

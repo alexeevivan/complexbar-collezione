@@ -5,6 +5,7 @@
 @use 'components/_header';
 @use 'components/_footer';
 @use 'components/_registration-form';
+@use 'components/_hero-slider';
 
 @use 'responsive/_responsive-header';
 @use 'responsive/_responsive-footer';
@@ -113,6 +114,24 @@ p {
 					&.active {
 						background: rgba(255, 255, 255, 1);
 					}
+				}
+			}
+
+			// Старый слайдер - скрываем на мобильных
+			.slider__wrapper {
+				display: block;
+				
+				@media (max-width: 767px) {
+					display: none;
+				}
+			}
+
+			// Hero Slider - показываем только на мобильных
+			.hero-slider {
+				display: none;
+				
+				@media (max-width: 767px) {
+					display: flex;
 				}
 			}
 

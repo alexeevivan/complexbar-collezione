@@ -4,8 +4,13 @@ class CalendarSlider {
 		this.container = containerElement;
 		this.monthList = this.container.querySelector('.calendar__month');
 		this.slides = Array.from(this.container.querySelectorAll('.calendar__slide'));
-		this.prevBtn = this.container.querySelector('.calendar__control-btn .prev').closest('.calendar__control-btn');
-		this.nextBtn = this.container.querySelector('.calendar__control-btn .next').closest('.calendar__control-btn');
+		
+		// Ищем кнопки управления
+		const prevBtnImg = this.container.querySelector('.calendar__control-btn .prev');
+		const nextBtnImg = this.container.querySelector('.calendar__control-btn .next');
+		
+		this.prevBtn = prevBtnImg ? prevBtnImg.closest('.calendar__control-btn') : null;
+		this.nextBtn = nextBtnImg ? nextBtnImg.closest('.calendar__control-btn') : null;
 
 		// Блоки месяцев
 		this.monthBlocks = Array.from(document.querySelectorAll('.user__month'));
@@ -23,13 +28,19 @@ class CalendarSlider {
 		this.updateSlides();
 		this.updateMonthBlocks();
 
-		// События для кнопок
-		this.prevBtn.addEventListener('click', () => this.prev());
-		this.nextBtn.addEventListener('click', () => this.next());
+		// События для кнопок (только если они существуют)
+		if (this.prevBtn) {
+			this.prevBtn.addEventListener('click', () => this.prev());
+		}
+		if (this.nextBtn) {
+			this.nextBtn.addEventListener('click', () => this.next());
+		}
 
 		// Поддержка свайпов на touch устройствах (вертикальные)
-		this.monthList.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
-		this.monthList.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+		if (this.monthList) {
+			this.monthList.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+			this.monthList.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+		}
 
 		// Keyboard navigation
 		document.addEventListener('keydown', (e) => {

@@ -32,6 +32,14 @@ const ctrl = new Pane({
 ctrl.dispose()
 
 const update = () => {
+	// Проверяем, есть ли нужные элементы на странице
+	const hasGalleryElements = document.querySelector('.scaler img') && document.querySelector('.layer');
+	
+	if (!hasGalleryElements) {
+		// Если элементов нет (например, на главной странице), не запускаем анимацию
+		return;
+	}
+	
 	document.documentElement.dataset.theme = config.theme;
 	document.documentElement.dataset.enhanced = config.enhanced;
 	document.documentElement.dataset.stick = config.stick;
