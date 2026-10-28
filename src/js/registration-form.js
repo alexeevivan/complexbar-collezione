@@ -32,6 +32,11 @@ class RegistrationForm {
 		// Инициализация выбора даты
 		this.initDateSelection();
 
+		if (!this.eventConfig.registrationEnabled) {
+			this.lockForm();
+			return;
+		}
+
 		this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
 		// Real-time validation
@@ -90,6 +95,17 @@ class RegistrationForm {
 				this.selectedDate = e.target.value;
 			}
 		});
+	}
+
+	lockForm() {
+		const btn = this.elements.submitBtn;
+		btn.disabled = true;
+		btn.classList.add('is-closed');
+		btn.setAttribute('aria-disabled', 'true');
+		btn.querySelector('.form__submit-text').textContent = 'Регистрация закрыта';
+
+		// на случай отправки по Enter из поля
+		this.form.addEventListener('submit', (e) => e.preventDefault());
 	}
 
 	checkCooldown() {

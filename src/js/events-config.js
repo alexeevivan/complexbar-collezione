@@ -5,7 +5,7 @@ export const EVENTS_CONFIG = {
 	'october-event-1': {
 		eventId: 'october-event-1',
 		title: 'ODK. Презентация продуктов',
-		registrationEnabled: true,
+		registrationEnabled: false,
 		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
 	},
 	'october-event-2': {
