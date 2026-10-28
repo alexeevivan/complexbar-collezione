@@ -34,6 +34,8 @@ module.exports = (env, argv) => {
 		entry: {
 			main: './src/index.js',
 			recipes: './src/recipes.js',
+			collaboration: './src/collab.js',
+			expert: './src/expert.js'
 		},
 		output: {
 			path: path.resolve(__dirname, 'dist'),
@@ -102,6 +104,16 @@ module.exports = (env, argv) => {
 				template: './src/html/classes/calendar.html',
 				filename: 'calendar.html',
 				chunks: ['main', 'recipes'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/classes/collaboration.html',
+				filename: 'collaboration.html',
+				chunks: ['main', 'collaboration'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/classes/expert-studio.html',
+				filename: 'expert-studio.html',
+				chunks: ['main', 'expert'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-syrup-recipes.html',
