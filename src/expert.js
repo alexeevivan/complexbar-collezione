@@ -37,9 +37,19 @@ $(document).ready(function () {
 		pagination();
 	};
 
-	$(document).on("mousewheel DOMMouseScroll", function (e) {
+	// Стандартное событие wheel работает во всех браузерах (в Firefox старые
+	// mousewheel / DOMMouseScroll не приходят, если wheel отменён через preventDefault)
+	$(document).on("wheel", function (e) {
 		if (scrolling) return;
-		if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+
+		var ev = e.originalEvent;
+		// deltaMode 1 = строки (колесо мыши в Firefox), приводим к пикселям
+		var dy = ev.deltaY * (ev.deltaMode === 1 ? 16 : 1);
+
+		// игнорируем мелкие «хвосты» инерции тачпада
+		if (Math.abs(dy) < 10) return;
+
+		if (dy < 0) {
 			navigateUp();
 		} else {
 			navigateDown();
@@ -68,13 +78,11 @@ let sections = document.querySelectorAll("section"),
 	outerWrappers = gsap.utils.toArray(".outer"),
 	innerWrappers = gsap.utils.toArray(".inner"),
 	splitHeadings = headings.map(heading => new SplitText(heading, { type: "chars,words,lines", linesClass: "clip-text" })),
-	// заполняется после загрузки шрифтов (см. внизу файла)
 	splitDescriptions = [],
 	currentIndex = -1,
 	wrap = gsap.utils.wrap(0, sections.length),
 	animating;
 
-// блокируем ввод, пока текст не разбит на строки и не запущена первая секция
 animating = true;
 
 gsap.set(outerWrappers, { yPercent: 100 });
@@ -90,7 +98,6 @@ function gotoSection(index, direction) {
 			onComplete: () => animating = false
 		});
 	if (currentIndex >= 0) {
-		// The first time this function runs, current is -1
 		gsap.set(sections[currentIndex], { zIndex: 0 });
 		tl.to(images[currentIndex], { yPercent: -15 * dFactor })
 			.set(sections[currentIndex], { autoAlpha: 0 });
@@ -116,7 +123,6 @@ function gotoSection(index, direction) {
 			}
 		}, 0.2);
 
-	// Описание под заголовком: строки выезжают из-под маски, чуть позже заголовка
 	if (splitDescriptions[index]) {
 		tl.fromTo(splitDescriptions[index].lines, {
 			autoAlpha: 0,
@@ -129,11 +135,14 @@ function gotoSection(index, direction) {
 			stagger: 0.12
 		}, 0.5);
 	}
-
 	currentIndex = index;
 }
 
-Observer.create({
+// Observer нужен только на мобильных: на ПК секции скрыты (display: none),
+// а Observer с preventDefault перехватывал колесо/тачпад и крутил невидимые анимации
+const mobileQuery = window.matchMedia("(max-width: 768px)"); // тот же порог, что в _responsive-expert.scss
+
+const observer = Observer.create({
 	type: "wheel,touch,pointer",
 	wheelSpeed: -1,
 	onDown: () => !animating && gotoSection(currentIndex - 1, -1),
@@ -142,13 +151,13 @@ Observer.create({
 	preventDefault: true
 });
 
-// Ждём шрифты, иначе переносы строк в абзацах посчитаются по запасному шрифту
+const toggleObserver = () => mobileQuery.matches ? observer.enable() : observer.disable();
+toggleObserver();
+mobileQuery.addEventListener("change", toggleObserver);
+
 document.fonts.ready.then(() => {
 	splitDescriptions = descriptions.map(p =>
 		p ? new SplitText(p, { type: "lines", mask: "lines" }) : null
 	);
 	gotoSection(0, 1);
 });
-
-// original: https://codepen.io/BrianCross/pen/PoWapLP
-// horizontal version: https://codepen.io/GreenSock/pen/xxWdeMK

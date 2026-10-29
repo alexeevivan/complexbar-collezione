@@ -38,7 +38,8 @@ body {
 	.first,
 	.second,
 	.third,
-	.fourth {
+	.fourth,
+	.fifth {
 		display: none;
 	}
 }
@@ -171,7 +172,7 @@ body {
 
 	&-3 {
 		.skw-page__half--left .skw-page__content {
-			background-image: url("../assets/img/studio/front-view-iced-cocktail-fresh-icing-inside-long-glass-dark-dark-surface-with-drink-juice-cocktail-bar.jpg_60f778f1_2K.jpg");
+			background-image: url("../assets/img/studio/cocktail.jpg");
 			background-position: center;
 		}
 
@@ -192,7 +193,7 @@ body {
 
 	&-5 {
 		.skw-page__half--left .skw-page__content {
-			background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/img-test.jpg');
+			background-image: unset;
 		}
 
 		.skw-page__half--right .skw-page__content {
