@@ -8,7 +8,7 @@ $menuItems: 7;
 	}
 
 	.header {
-		height: calc(var(--index) * 6);
+		height: calc(var(--index) * 9);
 		z-index: 3;
 		position: absolute;
 		display: flex;
@@ -19,7 +19,7 @@ $menuItems: 7;
 		overflow: hidden;
 		transition: all 0.5s ease-out, background 1s ease-out;
 		transition-delay: 0.2s;
-		padding: 24px 24px 0 24px;
+		padding: 24px;
 
 		.burger {
 			display: block;

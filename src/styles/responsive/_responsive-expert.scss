@@ -5,6 +5,8 @@
 		}
 
 		.header {
+			position: fixed;
+
 			.burger {
 				.line {
 					stroke: var(--main-color);
