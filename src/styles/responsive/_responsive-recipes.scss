@@ -76,6 +76,30 @@
 		}
 	}
 
+	.footer {
+		&.footer-recipes {
+			background-color: var(--main-color);
+
+			.footer__container {
+				.footer__logo {
+					.recipes-link {
+						display: none;
+					}
+
+					.regular-link {
+						display: block;
+					}
+
+					.logo {
+						&.cartel {
+							filter: invert(0);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	@layer demo {
 		.content-wrap {
 			background: var(--main-color);

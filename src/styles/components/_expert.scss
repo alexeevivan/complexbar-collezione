@@ -1,27 +1,10 @@
-*,
-*:before,
-*:after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-$openSans: 'Open Sans', Helvetica, Arial, sans-serif;
-
-body {
-	background: var(--dark-color) !important;
-	font-family: $openSans;
-}
-
-.skw-pages {
-	overflow: hidden;
-	position: relative;
-	height: 100vh;
-}
-
 $skewDeg: 18deg;
 $magicVH: 32.4vh; // this number is magic and depends on skew angle
 $scrollTime: 1s;
+
+body {
+	background: var(--dark-color) !important;
+}
 
 .ep-container {
 	.header {
@@ -44,6 +27,19 @@ $scrollTime: 1s;
 				}
 			}
 		}
+	}
+
+	.skw-pages {
+		overflow: hidden;
+		position: relative;
+		height: 100vh;
+	}
+
+	.first,
+	.second,
+	.third,
+	.fourth {
+		display: none;
 	}
 }
 

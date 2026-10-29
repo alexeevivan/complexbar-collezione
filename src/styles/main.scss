@@ -120,7 +120,7 @@ p {
 			// Старый слайдер - скрываем на мобильных
 			.slider__wrapper {
 				display: block;
-				
+
 				@media (max-width: 767px) {
 					display: none;
 				}
@@ -129,7 +129,7 @@ p {
 			// Hero Slider - показываем только на мобильных
 			.hero-slider {
 				display: none;
-				
+
 				@media (max-width: 767px) {
 					display: flex;
 				}
@@ -396,6 +396,7 @@ p {
 			filter: blur(0px);
 			font-size: calc(var(--index) * 2);
 			text-transform: uppercase;
+			font-family: "Montserrat", sans-serif;
 			font-weight: 600;
 
 			&:hover {

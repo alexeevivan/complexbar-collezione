@@ -1,0 +1,113 @@
+@media screen and (max-width: 768px) {
+	.ep-container {
+		.skw-pages {
+			display: none;
+		}
+
+		.header {
+			.burger {
+				.line {
+					stroke: var(--main-color);
+				}
+			}
+		}
+
+		.first,
+		.second,
+		.third,
+		.fourth {
+			display: block;
+		}
+
+		h2 {
+			font-size: calc(var(--index) * 2.5);
+			font-weight: 600;
+			line-height: 1.2;
+			text-align: center;
+			margin-right: -0.5em;
+			width: 90vw;
+			max-width: 1200px;
+			text-transform: uppercase;
+			color: var(--main-color);
+		}
+
+		section {
+			height: 100%;
+			width: 100%;
+			top: 0;
+			position: fixed;
+			visibility: hidden;
+		}
+
+		section .outer,
+		section .inner {
+			width: 100%;
+			height: 100%;
+			overflow-y: hidden;
+		}
+
+		section .bg {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			background-size: cover;
+			background-position: center;
+			flex-direction: column; // добавить к существующим свойствам
+			gap: 1.5em;
+		}
+
+		section .bg .section-description {
+			z-index: 999;
+			width: 90vw;
+			max-width: 36rem;
+			margin: 0;
+			text-align: center;
+			font-size: calc(var(--index) * 1.2); // подберите размер под макет
+			line-height: 1.5;
+			color: var(--main-color);
+
+			span {
+				color: goldenrod;
+				font-weight: 700;
+			}
+		}
+
+		section .bg h2 {
+			z-index: 999;
+		}
+
+		section .bg .clip-text {
+			overflow: hidden;
+		}
+
+		.first .bg {
+			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%), url("../assets/img/studio/Tezza-7277.jpeg");
+		}
+
+		.second .bg {
+			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%), url("../assets/img/studio/Tezza-9061.jpeg");
+		}
+
+		.third .bg {
+			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%), url("../assets/img/studio/front-view-iced-cocktail-fresh-icing-inside-long-glass-dark-dark-surface-with-drink-juice-cocktail-bar.jpg_60f778f1_2K.jpg");
+		}
+
+		.fourth .bg {
+			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.1) 100%), url("../assets/img/label-pin-red.jpg");
+		}
+
+		.fifth .bg {
+			background-size: 100% 100%;
+			background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+			background-image: conic-gradient(from 180deg at 50% 75%, #0a0a0c 0%, #881600 50%, #881600 100%);
+		}
+
+		h2 * {
+			will-change: transform;
+		}
+	}
+}
