@@ -3,7 +3,6 @@ import $ from 'jquery';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { initRegistrationForm } from './js/registration-form.js';
 import { initCalendarSlider } from './js/calendar-slider.js';
-import './js/calendar-page.js';
 import './js/swiper-slider.js';
 
 // -- Slider

@@ -1,5 +1,4 @@
 import './styles/expert.scss';
-import './styles/main.scss';
 import $ from 'jquery';
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";

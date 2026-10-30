@@ -9,6 +9,7 @@ class RegistrationForm {
 		this.isSubmitting = false;
 		this.cooldownKey = 'registration_cooldown_' + this.eventId;
 		this.selectedDate = null;
+		this.clientId = this.getClientId();
 
 		this.elements = {
 			name: this.form.querySelector('[name="name"]'),
@@ -46,6 +47,24 @@ class RegistrationForm {
 
 		// Проверка cooldown при загрузке
 		this.checkCooldown();
+	}
+
+	getClientId() {
+		const storageKey = 'registration_client_id';
+
+		try {
+			let clientId = localStorage.getItem(storageKey);
+			if (!clientId) {
+				clientId = (window.crypto && window.crypto.randomUUID)
+					? window.crypto.randomUUID()
+					: 'client_' + Date.now().toString(36) + Math.random().toString(36).slice(2);
+				localStorage.setItem(storageKey, clientId);
+			}
+			return clientId;
+		} catch (error) {
+			// localStorage может быть недоступен (приватный режим, запрет cookies)
+			return 'anonymous';
+		}
 	}
 
 	initDateSelection() {
@@ -274,6 +293,7 @@ class RegistrationForm {
 		const formData = {
 			eventId: this.eventId,
 			eventDate: this.selectedDate, // Выбранная дата мероприятия
+			clientId: this.clientId, // Идентификатор браузера для rate-limit
 			name: this.elements.name.value.trim(),
 			establishment: this.elements.establishment.value.trim(),
 			position: this.elements.position.value.trim(),

@@ -1,13 +1,14 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, Parallax, Autoplay } from 'swiper/modules';
+import $ from 'jquery';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // HERO SLIDER
 let menu = [];
-jQuery('.swiper-slide').each(function (index) {
-	menu.push(jQuery(this).find('.slide-inner').attr("data-text"));
+$('.swiper-slide').each(function (index) {
+	menu.push($(this).find('.slide-inner').attr("data-text"));
 });
 let interleaveOffset = 0.5;
 let swiperOptions = {

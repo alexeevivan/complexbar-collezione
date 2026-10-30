@@ -1,13 +1,8 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Pane } from "tweakpane";
 
-// 1 раз регистрируем и все
 gsap.registerPlugin(ScrollTrigger);
 
-let layersCtrl;
-let centerCtrl;
-let staggerCtrl;
 let scalerTl;
 let layersTl;
 
@@ -24,22 +19,13 @@ const config = {
 	stagger: "range",
 };
 
-const ctrl = new Pane({
-	title: "Config",
-	expanded: true,
-});
-
-ctrl.dispose()
-
 const update = () => {
-	// Проверяем, есть ли нужные элементы на странице
 	const hasGalleryElements = document.querySelector('.scaler img') && document.querySelector('.layer');
-	
+
 	if (!hasGalleryElements) {
-		// Если элементов нет (например, на главной странице), не запускаем анимацию
 		return;
 	}
-	
+
 	document.documentElement.dataset.theme = config.theme;
 	document.documentElement.dataset.enhanced = config.enhanced;
 	document.documentElement.dataset.stick = config.stick;
@@ -47,15 +33,8 @@ const update = () => {
 	document.documentElement.dataset.layers = config.layers;
 	document.documentElement.dataset.stagger = config.stagger;
 
-	// управляем видимостью контролов
-	if (hasScrollSupport) {
-		if (layersCtrl) layersCtrl.hidden = !config.enhanced;
-		if (staggerCtrl) staggerCtrl.hidden = !config.enhanced;
-		if (centerCtrl) centerCtrl.hidden = !config.enhanced;
-	}
-
 	if (config.enhanced && !hasScrollSupport) {
-		// ВАЖНО: убиваем старые таймлайны перед созданием новых, иначе при каждом update будет утечка
+		// Убиваем старые таймлайны перед созданием новых, иначе будет утечка
 		scalerTl?.kill();
 		layersTl?.kill();
 
@@ -87,7 +66,7 @@ const update = () => {
 			.from(".layer:nth-of-type(3)", { opacity: 0, ease: "sine.out" }, 0)
 			.from(".layer:nth-of-type(3)", { scale: 0, ease: "power4.inOut" }, 0);
 	} else if (!config.enhanced || hasScrollSupport) {
-		// сбрасываем стили правильно через clearProps
+		// Сбрасываем стили через clearProps
 		gsap.set([".scaler img", ".layer"], { clearProps: "all" });
 		scalerTl?.kill();
 		layersTl?.kill();
@@ -96,42 +75,4 @@ const update = () => {
 	}
 };
 
-const sync = (event) => {
-	if (
-		!document.startViewTransition ||
-		event.target.controller.view.labelElement.innerText !== "Theme"
-	)
-		return update();
-	document.startViewTransition(() => update());
-};
-
-ctrl.addBinding(config, "enhanced", { label: "Enhance" });
-
-if (hasScrollSupport) {
-	centerCtrl = ctrl.addBinding(config, "center", {
-		label: "Center",
-		hidden: !config.enhanced,
-	});
-	layersCtrl = ctrl.addBinding(config, "layers", {
-		label: "Layers",
-		hidden: !config.enhanced,
-	});
-	staggerCtrl = ctrl.addBinding(config, "stagger", {
-		label: "Stagger",
-		options: {
-			Range: "range", Timing: "timing"
-		},
-		hidden: !config.enhanced,
-	});
-}
-
-ctrl.addBinding(config, "stick", { label: "Stick" });
-ctrl.addBinding(config, "theme", {
-	label: "Theme",
-	options: {
-		System: "system", Light: "light", Dark: "dark"
-	},
-});
-
-ctrl.on("change", sync);
 update();

@@ -1,29 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const posthtml = require('posthtml');
-const posthtmlInclude = require('posthtml-include');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-class PostHtmlIncludePlugin {
-
-	apply(compiler) {
-		compiler.hooks.compilation.tap('PostHtmlIncludePlugin', (compilation) => {
-			const hooks = HtmlWebpackPlugin.getHooks(compilation);
-			hooks.beforeEmit.tapPromise('PostHtmlIncludePlugin', async (data) => {
-				const result = await posthtml([
-					posthtmlInclude({
-						root: path.resolve(__dirname, 'public'),
-					}),
-				]).process(data.html, {
-					from: path.resolve(__dirname, 'public/index.html'),
-				});
-				data.html = result.html;
-				return data;
-			});
-		});
-	}
-}
 
 // Конфиг экспортируется функцией, чтобы учитывать режим (--mode development / production)
 module.exports = (env, argv) => {
@@ -34,6 +12,7 @@ module.exports = (env, argv) => {
 		entry: {
 			main: './src/index.js',
 			recipes: './src/recipes.js',
+			calendar: './src/calendar.js',
 			collaboration: './src/collab.js',
 			expert: './src/expert.js'
 		},
@@ -103,7 +82,7 @@ module.exports = (env, argv) => {
 			new HtmlWebpackPlugin({
 				template: './src/html/classes/calendar.html',
 				filename: 'calendar.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['main', 'calendar'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/classes/collaboration.html',
@@ -118,43 +97,51 @@ module.exports = (env, argv) => {
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-syrup-recipes.html',
 				filename: 'pd-syrup-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-puree-recipes.html',
 				filename: 'pd-puree-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-drinkbase-recipes.html',
 				filename: 'pd-drinkbase-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/odk-syrup-recipes.html',
 				filename: 'odk-syrup-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/odk-puree-recipes.html',
 				filename: 'odk-puree-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/code-recipes.html',
 				filename: 'code-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/osnova-recipes.html',
 				filename: 'osnova-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/drinksome-recipes.html',
 				filename: 'drinksome-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/bubbledrops-recipes.html',
 				filename: 'bubbledrops-recipes.html',
+				chunks: ['recipes'],
 			}),
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].[contenthash].css',
 			}),
-			new PostHtmlIncludePlugin(),
 			new CopyWebpackPlugin({
 				patterns: [
 					{
@@ -170,7 +157,7 @@ module.exports = (env, argv) => {
 				directory: path.resolve(__dirname, 'dist'),
 			},
 			watchFiles: [
-				'public/**/*.html',
+				'src/html/**/*.html',
 			],
 			port: 8080,
 			open: true,

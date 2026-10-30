@@ -133,7 +133,7 @@ $menuItems: 7;
 		}
 
 		&.menu-opened {
-			height: 100dvh;
+			height: 100svh;
 			background-color: var(--dark-color);
 			transition: all 0.3s ease-in, background 0.5s ease-in;
 			transition-delay: 0.25s;

@@ -1,14 +1,4 @@
-@use 'base/_null';
-@use 'base/_variables';
-@use 'base/_fonts';
-
-@use 'components/_header';
-@use 'components/_footer';
-@use 'components/_registration-form';
 @use 'components/_expert';
 @use 'components/_interactive-title';
 
-@use 'responsive/_responsive-header';
-@use 'responsive/_responsive-footer';
-@use 'responsive/_responsive-main';
 @use 'responsive/_responsive-expert';

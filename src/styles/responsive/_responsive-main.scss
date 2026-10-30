@@ -7,7 +7,7 @@
 
 			.container {
 				min-height: unset;
-				height: calc(100dvh - var(--index) * 6 - var(--index) * 8);
+				height: calc(100svh - var(--index) * 6 - var(--index) * 8);
 				position: relative;
 				margin: calc(var(--index) * 6) 0 0 0;
 				filter: drop-shadow(0px 6px 7px var(--dark-color));

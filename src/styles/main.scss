@@ -13,7 +13,7 @@
 
 body {
 	margin: 0;
-	min-height: 100dvh;
+	min-height: 100svh;
 	font-family: 'Montserrat', sans-serif;
 	background: var(--main-color);
 	color: #252525;
@@ -35,7 +35,7 @@ p {
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		min-height: 100dvh;
+		min-height: 100svh;
 		padding: calc(var(--index) * 4) 48px 80px;
 
 		.top-divider {
@@ -75,12 +75,12 @@ p {
 		}
 
 		.container {
-			min-height: calc(100dvh - calc(var(--index) * 16));
+			min-height: calc(100svh - calc(var(--index) * 16));
 			width: 100%;
 
 			.slider__wrapper {
 				width: 100%;
-				height: calc(100dvh - var(--index) * 16);
+				height: calc(100svh - var(--index) * 16);
 				position: relative;
 				top: 10%;
 				overflow: hidden;
@@ -637,7 +637,7 @@ p {
 		}
 
 		.user {
-			min-height: calc(100dvh - calc(var(--index) * 16));
+			min-height: calc(100svh - calc(var(--index) * 16));
 			width: 100%;
 			max-width: 1280px;
 			padding: 0 var(--index);

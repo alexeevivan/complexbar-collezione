@@ -59,13 +59,13 @@ h2 {
 
 @media (max-width: 991px) {
 	.hero-slider {
-		height: calc((100dvh - var(--index) * 6 - var(--index) * 8) - 10dvh);
+		height: calc((100svh - var(--index) * 6 - var(--index) * 8) - 10dvh);
 	}
 }
 
 @media (max-width: 767px) {
 	.hero-slider {
-		height: calc((100dvh - var(--index) * 6 - var(--index) * 8) - 10dvh);
+		height: calc((100svh - var(--index) * 6 - var(--index) * 8) - 10dvh);
 	}
 }
 
@@ -268,13 +268,13 @@ h2 {
 
 @media (max-width: 991px) {
 	.hero-style {
-		height: calc((100dvh - var(--index) * 6 - var(--index) * 8) - 10dvh);
+		height: calc((100svh - var(--index) * 6 - var(--index) * 8) - 10dvh);
 	}
 }
 
 @media (max-width: 767px) {
 	.hero-style {
-		height: calc((100dvh - var(--index) * 6 - var(--index) * 8) - 10dvh);
+		height: calc((100svh - var(--index) * 6 - var(--index) * 8) - 10dvh);
 	}
 }
 
