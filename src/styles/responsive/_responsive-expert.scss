@@ -106,7 +106,7 @@
 		.fifth .bg {
 			background-size: 100% 100%;
 			background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
-			background-image: conic-gradient(from 180deg at 50% 75%, #0a0a0c 0%, #881600 50%, #881600 100%);
+			background-image: conic-gradient(from 180deg at 50% 75%, #0a0a0c 0%, var(--cherry-color) 50%, var(--cherry-color) 100%);
 		}
 
 		h2 * {

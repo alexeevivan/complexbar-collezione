@@ -1,1 +1,331 @@
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+	body {
+		.header {
+			position: fixed;
+			background-color: color-mix(in srgb, var(--main-color) calc(var(--header-progress, 0) * 100%), transparent);
+			box-shadow: 2px 2px 2px color-mix(in srgb, var(--mute) calc(var(--header-progress, 0) * 100%), transparent);
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+
+			// при открытом меню фон и тень сразу полные
+			&.menu-opened {
+				background-color: var(--dark-color);
+				box-shadow: 2px 2px 2px var(--mute);
+			}
+		}
+
+		.page {
+			main {
+				.intro {
+					min-height: 100svh;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+
+					.top-divider,
+					.bottom-divider {
+						margin: 0;
+						display: grid;
+						grid-template-columns: 45% auto 45%;
+						height: calc(37.5dvh - var(--index) * 4);
+					}
+
+					.top-divider {
+						align-content: end;
+					}
+
+					.bottom-divider {
+						align-content: start;
+					}
+
+					.into__badge {
+						height: 25dvh;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+					}
+				}
+
+				.card-container {
+
+					.card-container__search {
+						margin: 0 0 calc(var(--index) * 4) 0;
+						// display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						display: none;
+
+						form {
+							text-align: center;
+							position: relative;
+
+							input {
+								width: 100%;
+							}
+
+							button {
+								position: absolute;
+								right: 0;
+							}
+						}
+					}
+
+					.card-container__cocktails {
+						display: flex;
+						flex-direction: column;
+						gap: calc(var(--index) * 4);
+					}
+
+					.card-container__cocktails[data-reveal] {
+						.card-container__item {
+
+							// порционный показ (как раньше)
+							&:nth-child(n+4):not(.is-revealed) {
+								display: none;
+							}
+
+							// начальное состояние для анимации появления
+							opacity: 0;
+							transform: translate3d(0, 40px, 0) scale(0.96);
+							transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+							transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+							will-change: opacity,
+							transform;
+
+							&.is-visible {
+								opacity: 1;
+								transform: none;
+								will-change: auto;
+							}
+						}
+
+						.card-container__picture {
+							overflow: hidden;
+							border-radius: 24px;
+
+							img {
+								border-radius: 0;
+								transform: scale(1.08);
+								transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+							}
+						}
+
+						.card-container__item.is-visible .card-container__picture img {
+							transform: scale(1);
+						}
+					}
+
+					.card-container__item {
+						.card-container__picture {
+							picture {
+								aspect-ratio: 4 / 3;
+								overflow: hidden;
+
+								img {
+									height: auto;
+									margin: auto;
+									border-radius: 24px;
+									display: block;
+									width: 100%;
+									height: 100%;
+									object-fit: cover;
+									object-position: center;
+								}
+							}
+						}
+
+						.card-container__name {
+							width: 100%;
+							text-align: center;
+							padding: var(--index) 0 0 0;
+							display: grid;
+							grid-template-columns: 20% 60% 20%;
+
+							span {
+								text-transform: uppercase;
+								font-family: "GTWalsheim Pro";
+								text-align: center;
+								font-size: calc(var(--index) * 1.2);
+
+								&.badge-alcohol,
+								&.badge-non-alcohol {
+									font-family: monospace;
+									border-radius: 12px;
+									font-size: calc(var(--index) * .75);
+									display: inline-flex;
+									justify-content: center;
+									align-items: center;
+								}
+
+								&.badge-alcohol {
+									border: 1px solid var(--cherry-color);
+									color: var(--cherry-color);
+								}
+
+								&.badge-non-alcohol {
+									border: 1px solid #07393c;
+									color: #07393c;
+								}
+							}
+						}
+					}
+				}
+
+				.recipe-modal {
+					width: calc(100% - 24px);
+					max-height: calc(100dvh - 24px);
+					padding: 0;
+					border: 0;
+					border-radius: 24px;
+					background: var(--main-color);
+					margin: auto;
+					opacity: 0;
+					transform: translateY(24px) scale(0.98);
+					transition:
+						opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+						transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+						overlay 0.4s allow-discrete,
+						display 0.4s allow-discrete;
+
+					&[open] {
+						opacity: 1;
+						transform: none;
+
+						@starting-style {
+							opacity: 0;
+							transform: translateY(24px) scale(0.98);
+						}
+					}
+
+					&::backdrop {
+						background: rgb(0 0 0 / 70%);
+						backdrop-filter: blur(6px);
+					}
+
+					&__content {
+						max-height: calc(75dvh);
+						padding: 24px;
+						overflow-y: auto;
+
+						img {
+							border-radius: 12px;
+							aspect-ratio: 4/3;
+							object-fit: cover;
+						}
+
+						h2 {
+							font-family: "GTWalsheim Pro", sans-serif;
+							text-transform: uppercase;
+							font-weight: 300;
+							font-size: calc(var(--index) * 1.5);
+							text-align: center;
+							margin: calc(var(--index)) 0;
+						}
+
+						.recipe-modal__cocktail-data {
+							display: grid;
+							grid-template-columns: repeat(2, 1fr);
+							grid-template-rows: repeat(4, 1fr);
+							row-gap: 12px;
+							column-gap: 8px;
+
+							.recipe-modal__ingredients,
+							.recipe-modal__method,
+							.recipe-modal__garnish {
+								h3 {
+									font-family: "GTWalsheim Pro", sans-serif;
+									font-weight: 300;
+									text-align: center;
+									font-size: calc(var(--index) * 1.1);
+									text-transform: uppercase;
+								}
+							}
+
+							.recipe-modal__method,
+							.recipe-modal__garnish {
+								p {
+									font-size: calc(var(--index) * 0.9);
+								}
+							}
+
+							.recipe-modal__ingredients {
+								grid-column: span 2 / span 2;
+								grid-row: span 2 / span 2;
+
+								ul {
+									margin: 12px 0 0 0;
+
+									li {
+										font-size: calc(var(--index) * 0.9);
+									}
+								}
+							}
+
+							.recipe-modal__method {
+								grid-row: span 2 / span 2;
+								grid-column-start: 1;
+								grid-row-start: 3;
+							}
+
+							.recipe-modal__garnish {
+								grid-row: span 2 / span 2;
+								grid-column-start: 2;
+								grid-row-start: 3;
+							}
+						}
+					}
+
+					&__close {
+						position: absolute;
+						top: 16px;
+						right: 16px;
+						padding: 0 12px 0 12px;
+						background: var(--main-color);
+						border-bottom-left-radius: 12px;
+						font-size: 36px;
+						margin: 4px 4px 0px 0px;
+						color: var(--cherry-color);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+
+	@keyframes card-in {
+		from {
+			opacity: 0;
+			transform: translateY(24px);
+		}
+
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.card-container__cocktails[data-reveal] .card-container__item {
+			transform: none;
+			transition: opacity 0.3s ease;
+		}
+	}
+
+	// пока показаны не все карточки, футер скрыт
+	.page:has(.card-container__cocktails[data-reveal]:not(.is-complete)) .footer {
+		display: none;
+	}
+
+	html:has(.recipe-modal[open]) {
+		overflow: hidden;
+	}
+
+	@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+		.header {
+			background-color: var(--main-color);
+			box-shadow: 2px 2px 2px var(--mute);
+		}
+	}
+}

@@ -5,6 +5,8 @@ $menuItems: 7;
 @media screen and (max-width: 767px) {
 	.fixed {
 		position: fixed;
+		left: 0;
+		width: 100%;
 	}
 
 	.header {
@@ -17,8 +19,7 @@ $menuItems: 7;
 		left: 0;
 		width: 100%;
 		overflow: hidden;
-		transition: all 0.5s ease-out, background 1s ease-out;
-		transition-delay: 0.2s;
+		transition: all 0.25s ease-out, background 1s ease-out;
 		padding: 24px;
 
 		.burger {

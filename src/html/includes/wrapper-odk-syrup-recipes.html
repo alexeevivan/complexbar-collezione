@@ -53,25 +53,1245 @@
 			</li>
 		</ul>
 	</header>
-
 	<main class="main recipes-page">
-		<div class="top-divider">
-			<span class="line"></span>
-			<span class="dot"></span>
-			<span class="line"></span>
-		</div>
+		<section class="intro">
+			<div class="top-divider">
+				<span class="line"></span>
+				<span class="dot"></span>
+				<span class="line"></span>
+			</div>
 
-		<h1 class="recipes-title">ODK - Сиропы</h1>
+			<div class="into__badge">
+				<h1 class="recipes-title">
+					ODK - Сиропы
+				</h1>
 
-		<div class="recipes-content">
-			<p>Рецепты коктейлей с сиропами ODK</p>
-		</div>
+				<div class="recipes-content">
+					<p>
+						Рецепты коктейлей с сиропами ODK
+					</p>
+				</div>
+			</div>
 
-		<div class="bottom-divider">
-			<span class="line"></span>
-			<span class="dot"></span>
-			<span class="line"></span>
-		</div>
+			<div class="bottom-divider">
+				<span class="line"></span>
+				<span class="dot"></span>
+				<span class="line"></span>
+			</div>
+		</section>
+
+		<section class="card-container">
+			<div class="card-container__search">
+				<form action="/search" method="get">
+					<label for="site-search">
+						Поиск по сайту:
+					</label>
+					<input type="search" id="site-search" name="q" placeholder="Что вы ищете?">
+					<button type="submit">
+						Найти
+					</button>
+				</form>
+				<div class="card-container__search-suggestions">
+					<span>
+						пандан
+					</span>
+					<span>
+						бобы тонка
+					</span>
+					<span>
+						агава
+					</span>
+					<span>
+						цветы бузины
+					</span>
+					<span>
+						фалернум
+					</span>
+					<span>
+						гибискус
+					</span>
+				</div>
+			</div>
+			<div class="card-container__cocktails" data-reveal>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#virginious-bana-bana" class="recipe-trigger" data-recipe-id="virginious-bana-bana"
+						aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/virgin-bana-bana.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Virginious Bana-Bana
+							</span>
+							<span class="badge-non-alcohol">
+								б/а
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#blue-ice-latte" class="recipe-trigger" data-recipe-id="blue-ice-latte"
+						aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/blue-ice-latte.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Blue Ice Latte
+							</span>
+							<span class="badge-non-alcohol">
+								б/а
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#rose-winter" class="recipe-trigger" data-recipe-id="rose-winter" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/rose-winter.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Rose Winter
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#fruity-spice-latte" class="recipe-trigger" data-recipe-id="fruity-spice-latte"
+						aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/fruity-pumpkin-spice-latte.png"
+									alt="cocktail picture" loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Pumpkin Spice Latte
+							</span>
+							<span class="badge-non-alcohol">
+								б/а
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#green-tower" class="recipe-trigger" data-recipe-id="green-tower" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/green-tower.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Green Tower
+							</span>
+							<span class="badge-non-alcohol">
+								б/а
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#moscow-blossom" class="recipe-trigger" data-recipe-id="moscow-blossom"
+						aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/moscow-blossom.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Moscow Blossom
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#bana-bana" class="recipe-trigger" data-recipe-id="bana-bana" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/bana-bana.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Bana-bana
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#melony" class="recipe-trigger" data-recipe-id="melony" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/melony.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Rosy Melony
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#santas-pipe" class="recipe-trigger" data-recipe-id="santas-pipe" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/santas-pipe.jpg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								Santa’s Pipe
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+				<div class="card-container__item">
+					<a href="#k-roman" class="recipe-trigger" data-recipe-id="k-roman" aria-haspopup="dialog">
+						<div class="card-container__picture">
+							<picture>
+								<img src="assets/img/cocktails/odk-syrup/kroman.jpeg" alt="cocktail picture"
+									loading="lazy" width="400" height="500">
+							</picture>
+						</div>
+						<div class="card-container__name">
+							<span class="empty"></span>
+							<span>
+								K &amp; Roman
+							</span>
+							<span class="badge-alcohol">
+								алк
+							</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+		<section class="modal">
+			<dialog class="recipe-modal" data-recipe-modal aria-labelledby="recipe-modal-title">
+				<article class="recipe-modal__content">
+					<form method="dialog">
+						<button class="recipe-modal__close" type="submit" aria-label="Закрыть" data-recipe-close>
+							×
+						</button>
+					</form>
+					<img data-recipe-image src="" alt="">
+					<h2 id="recipe-modal-title" data-recipe-title></h2>
+					<div class="recipe-modal__cocktail-data">
+						<div class="recipe-modal__ingredients">
+							<h3>
+								Ингредиенты
+							</h3>
+							<ul data-recipe-ingredients></ul>
+						</div>
+						<div class="recipe-modal__method">
+							<h3>
+								Метод
+							</h3>
+							<p data-recipe-method></p>
+						</div>
+						<div class="recipe-modal__garnish">
+							<h3>
+								Украшение
+							</h3>
+							<p data-recipe-garnish></p>
+						</div>
+					</div>
+				</article>
+			</dialog>
+		</section>
 	</main>
 
 	<include src="includes/footer.html"></include>

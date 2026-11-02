@@ -3,7 +3,17 @@ import $ from 'jquery';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { initRegistrationForm } from './js/registration-form.js';
 import { initCalendarSlider } from './js/calendar-slider.js';
+import { initCardReveal } from './js/card-reveal.js';
+import { initHeaderScroll } from './js/header-scroll.js';
 import './js/swiper-slider.js';
+
+// Recipes Cocktail Cards Reveal
+$(document).ready(function () {
+	initRegistrationForm();
+	initCalendarSlider();
+	initCardReveal();
+	initHeaderScroll();
+});
 
 // -- Slider
 
@@ -73,18 +83,36 @@ $(document).ready(function () {
 document.addEventListener('DOMContentLoaded', function () {
 	var burger = document.querySelector('.burger'),
 		header = document.querySelector('.header'),
-		body = document.body;
+		body = document.body,
+		lockedScrollY = 0;
 
 	if (!burger || !header) {
 		console.error('burger/header не найдены', burger, header);
 		return;
 	}
 
+	function lockScroll() {
+		lockedScrollY = window.scrollY;
+		body.style.top = '-' + lockedScrollY + 'px';
+		body.classList.add('fixed');
+	}
+
+	function unlockScroll() {
+		body.classList.remove('fixed');
+		body.style.top = '';
+		// behavior: 'instant' — чтобы не было плавной прокрутки, если у html есть scroll-behavior: smooth
+		window.scrollTo({ top: lockedScrollY, left: 0, behavior: 'instant' });
+	}
+
 	burger.addEventListener('click', function () {
 		var isOpen = header.classList.toggle('menu-opened');
 		burger.classList.toggle('active', isOpen);
 		burger.classList.toggle('inverted', isOpen);
-		body.classList.toggle('fixed', isOpen);
-		console.log('menu open:', isOpen, burger.className);
+
+		if (isOpen) {
+			lockScroll();
+		} else {
+			unlockScroll();
+		}
 	});
 });

@@ -291,7 +291,7 @@ p {
 			/* how-to */
 
 			.flex--how-to .flex__item--left {
-				background: linear-gradient(to bottom, #881600, #0a0a0c);
+				background: linear-gradient(to bottom, var(--cherry-color), #0a0a0c);
 			}
 
 			.flex--how-to .flex__item--right {
@@ -305,13 +305,13 @@ p {
 			}
 
 			.flex--blaziken .flex__item--right {
-				background: linear-gradient(to bottom, #881600, #881600);
+				background: linear-gradient(to bottom, var(--cherry-color), var(--cherry-color));
 
 				.some {
 					width: 100%;
 					height: 100%;
 					z-index: 2;
-					background: linear-gradient(to bottom, #88160000, #0a0a0c);
+					background: linear-gradient(to bottom, var(--cherry-color)00, #0a0a0c);
 				}
 
 				.pokemon__img {
