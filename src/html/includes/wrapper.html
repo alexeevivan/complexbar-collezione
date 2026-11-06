@@ -36,7 +36,7 @@
 					<div class="flex__item flex__item--left">
 						<div class="user__date slider">
 							<span>
-								27.10.2026
+								19.11.2026
 							</span>
 						</div>
 						<div class="flex__content">
@@ -44,18 +44,19 @@
 								серия primus inter pares
 							</p>
 							<h1 class="text--big">
-								ODK<br><span>презентация продукции</span>
+								Зима<br><span>в наших меню</span>
 							</h1>
 							<p class="text--normal">
-								итальянские ингредиенты премиум-класса для Вашего бара
+								как выделиться эксклюзивностью, при этом не позволяя косту улететь в
+								стратосферу
 							</p>
 						</div>
 						<p class="text__background">
-							ODK<br>презентация продукции
+							Зима<br>в наших меню
 						</p>
 					</div>
 					<div class="flex__item flex__item--right">
-						<img class="pokemon__img" src="assets/img/odk.jpg" alt="ODK master-class banned" />
+						<img class="pokemon__img" src="assets/img/winter.png" alt="ODK master-class banned" />
 					</div>
 				</div>
 				<div class="flex__container flex--blaziken animate--start" data-slide="3">
@@ -160,7 +161,7 @@
 							<div class="slide-inner slide-class">
 								<div class="user__date slider second-course">
 									<span>
-										27.10.2026
+										19.11.2026
 									</span>
 								</div>
 								<div class="swiper-section">
@@ -169,12 +170,13 @@
 											Primus Inter Pares
 										</p>
 										<h2>
-											ODK<br>презентация продукции
+											Зимние напитки в меню
 										</h2>
 									</div>
 									<div data-swiper-parallax="400" class="slide-text">
 										<p>
-											итальянские ингредиенты премиум-класса для Вашего бара
+											как выделиться эксклюзивностью, при этом не позволяя косту улететь в
+											стратосферу
 										</p>
 									</div>
 									<div class="clearfix"></div>
@@ -197,7 +199,7 @@
 							<div class="slide-inner slide-class-secondary">
 								<div class="user__date slider">
 									<span>
-										04.11.2026
+										18.11.2026
 									</span>
 								</div>
 								<div class="swiper-section">
@@ -526,7 +528,7 @@
 						</button>
 					</div>
 					<ul class="calendar__month">
-						<li class="calendar__slide">
+						<li class="calendar__slide" hidden>
 							<div class="calendar__content">
 								<p>
 									октябрь & ноябрь
@@ -547,6 +549,13 @@
 								</p>
 							</div>
 						</li>
+						<li class="calendar__slide">
+							<div class="calendar__content">
+								<p>
+									январь
+								</p>
+							</div>
+						</li>
 					</ul>
 					<div class="calendar__control-container">
 						<button class="calendar__control-btn" type="button" area-label="Календарь мероприятий">
@@ -555,7 +564,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="user__month october">
+			<div class="user__month october" hidden>
 				<div class="user__block">
 					<h2 class="form__title">
 						ODK. Презентация продуктов
@@ -785,7 +794,7 @@
 					</p>
 					<div class="user__date">
 						<span class="user__course-date">
-							10.11.2026
+							19.11.2026
 						</span>
 						<span class="user__course-date">
 							24.11.2026
@@ -862,17 +871,18 @@
 				</div>
 				<div class="user__block">
 					<h2 class="form__title">
-						Современный бар как твист на классику смешанного мира
+						Напитки. И как их смешивать
 					</h2>
 					<p class="form__subtitle">
 						Регистрация на мероприятие
 					</p>
 					<div class="user__date">
-						<span class="user__course-date">
-							11.11.2026
+						<span class="user__course-date user__course-date--disabled" data-registration-disabled="true"
+							title="Регистрация на эту дату закрыта">
+							04.11.2026
 						</span>
 						<span class="user__course-date">
-							25.11.2026
+							18.11.2026
 						</span>
 					</div>
 					<form class="registration-form" data-event-id="november-event-2">
@@ -1032,7 +1042,7 @@
 				</div>
 				<div class="user__block">
 					<h2 class="form__title">
-						Современный бар как система. Автоматизация и стандартизация процессов
+						Современный бар как твист на классику смешанного мира
 					</h2>
 					<p class="form__subtitle">
 						Регистрация на мероприятие
@@ -1113,6 +1123,42 @@
 							<span>Не удалось отправить заявку. Попробуйте ещё раз.</span>
 						</div>
 					</form>
+				</div>
+			</div>
+			<div class="user__month january">
+				<div class="user__block" data-event-id="january-event-1">
+					<h2 class="form__title">
+						Подготовка к 14-му февраля и 8-му марта
+					</h2>
+					<p class="form__subtitle">
+						Регистрация на мероприятие
+					</p>
+					<div class="user__date">
+						<span class="user__course-date">
+							12.01.2027
+						</span>
+						<span class="user__course-date">
+							26.01.2027
+						</span>
+					</div>
+					<include src="includes/registration-form-template.html"></include>
+				</div>
+				<div class="user__block" data-event-id="january-event-2">
+					<h2 class="form__title">
+						Современный бар как система. Автоматизация и стандартизация процессов
+					</h2>
+					<p class="form__subtitle">
+						Регистрация на мероприятие
+					</p>
+					<div class="user__date">
+						<span class="user__course-date">
+							13.01.2027
+						</span>
+						<span class="user__course-date">
+							27.01.2027
+						</span>
+					</div>
+					<include src="includes/registration-form-template.html"></include>
 				</div>
 			</div>
 		</div>

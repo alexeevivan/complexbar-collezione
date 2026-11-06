@@ -18,8 +18,14 @@ const CONFIG = {
 		'november-event-1',
 		'november-event-2',
 		'december-event-1',
-		'december-event-2'
-	]
+		'december-event-2',
+		'january-event-1',
+		'january-event-2'
+	],
+	// Даты, которые остаются видимыми на сайте, но закрыты для регистрации
+	CLOSED_EVENT_DATES: {
+		'november-event-2': ['04.11.2026']
+	}
 };
 
 function doPost(e) {
@@ -60,6 +66,11 @@ function doPost(e) {
 			return createResponse(false, 'Мероприятие не найдено');
 		}
 		Logger.log('Event allowed');
+
+		if (isEventDateClosed(data.eventId, data.eventDate)) {
+			Logger.log('Event date is closed: ' + data.eventId + ' / ' + data.eventDate);
+			return createResponse(false, 'Регистрация на выбранную дату закрыта');
+		}
 
 		// Запись в Google Sheets
 		Logger.log('Calling saveToSheet with data: ' + JSON.stringify(data));
@@ -182,6 +193,11 @@ function incrementRateLimit(cache, key, max) {
 function normalizeClientId(clientId) {
 	const normalized = String(clientId || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 64);
 	return normalized || 'anonymous';
+}
+
+function isEventDateClosed(eventId, eventDate) {
+	const closedDates = CONFIG.CLOSED_EVENT_DATES[eventId] || [];
+	return closedDates.includes(String(eventDate || '').trim());
 }
 
 /**

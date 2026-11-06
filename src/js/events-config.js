@@ -37,6 +37,18 @@ export const EVENTS_CONFIG = {
 		title: 'Современный бар как система. Автоматизация и стандартизация процессов',
 		registrationEnabled: true,
 		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
+	},
+	'january-event-1': {
+		eventId: 'january-event-1',
+		title: 'Lorem ipsum dolor sit amet',
+		registrationEnabled: true,
+		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
+	},
+	'january-event-2': {
+		eventId: 'january-event-2',
+		title: 'Lorem ipsum dolor sit amet consectetur',
+		registrationEnabled: true,
+		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
 	}
 };
 
@@ -47,6 +59,6 @@ export function getEventConfig(eventId) {
 
 // Получить конфигурацию текущего мероприятия (по умолчанию первое)
 export function getCurrentEventConfig() {
-	return EVENTS_CONFIG['october-event-1'];
+	return EVENTS_CONFIG['november-event-1'];
 }
 

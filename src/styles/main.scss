@@ -868,6 +868,11 @@ p {
 	span {
 		font-size: calc(var(--index) * .75);
 	}
+
+	.user__course-date--disabled {
+		opacity: 0.5;
+		text-decoration: line-through;
+	}
 }
 
 @keyframes pulse-animation {

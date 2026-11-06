@@ -3,7 +3,7 @@ class CalendarSlider {
 	constructor(containerElement) {
 		this.container = containerElement;
 		this.monthList = this.container.querySelector('.calendar__month');
-		this.slides = Array.from(this.container.querySelectorAll('.calendar__slide'));
+		this.slides = Array.from(this.container.querySelectorAll('.calendar__slide:not([hidden])'));
 		
 		// Ищем кнопки управления
 		const prevBtnImg = this.container.querySelector('.calendar__control-btn .prev');
@@ -13,7 +13,7 @@ class CalendarSlider {
 		this.nextBtn = nextBtnImg ? nextBtnImg.closest('.calendar__control-btn') : null;
 
 		// Блоки месяцев
-		this.monthBlocks = Array.from(document.querySelectorAll('.user__month'));
+		this.monthBlocks = Array.from(document.querySelectorAll('.user__month:not([hidden])'));
 
 		this.currentIndex = 0;
 		this.isAnimating = false;

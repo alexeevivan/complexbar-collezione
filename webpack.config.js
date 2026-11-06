@@ -97,47 +97,47 @@ module.exports = (env, argv) => {
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-syrup-recipes.html',
 				filename: 'pd-syrup-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-puree-recipes.html',
 				filename: 'pd-puree-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-drinkbase-recipes.html',
 				filename: 'pd-drinkbase-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/odk-syrup-recipes.html',
 				filename: 'odk-syrup-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/odk-puree-recipes.html',
 				filename: 'odk-puree-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/code-recipes.html',
 				filename: 'code-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/osnova-recipes.html',
 				filename: 'osnova-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/drinksome-recipes.html',
 				filename: 'drinksome-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/bubbledrops-recipes.html',
 				filename: 'bubbledrops-recipes.html',
-				chunks: ['main', 'recipes'],
+				chunks: ['recipes'],
 			}),
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].[contenthash].css',

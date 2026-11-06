@@ -73,6 +73,9 @@ class RegistrationForm {
 		if (!userBlock) return;
 
 		const courseDates = Array.from(userBlock.querySelectorAll('.user__course-date'));
+		const availableDates = courseDates.filter((dateElement) =>
+			dateElement.dataset.registrationDisabled !== 'true'
+		);
 
 		if (courseDates.length === 0) {
 			// Нет дат - скрыть блок выбора
@@ -80,7 +83,7 @@ class RegistrationForm {
 			return;
 		}
 
-		if (courseDates.length === 1) {
+		if (courseDates.length === 1 && availableDates.length === 1) {
 			// Одна дата - автоматически выбираем её и скрываем блок выбора
 			this.selectedDate = courseDates[0].textContent.trim();
 			this.elements.dateGroup.style.display = 'none';
@@ -91,22 +94,27 @@ class RegistrationForm {
 		this.elements.dateGroup.style.display = 'block';
 		this.elements.dateOptions.innerHTML = '';
 
+		const defaultDateElement = availableDates[0] || null;
+
 		courseDates.forEach((dateElement, index) => {
 			const date = dateElement.textContent.trim();
 			const radioId = `date-${this.eventId}-${index}`;
+			const isDisabled = dateElement.dataset.registrationDisabled === 'true';
+			const isChecked = dateElement === defaultDateElement;
 
 			const label = document.createElement('label');
-			label.className = 'form__radio';
+			label.className = `form__radio${isDisabled ? ' form__radio--disabled' : ''}`;
 			label.innerHTML = `
-				<input type="radio" name="event-date-${this.eventId}" value="${date}" id="${radioId}" ${index === 0 ? 'checked' : ''} required />
+				<input type="radio" name="event-date-${this.eventId}" value="${date}" id="${radioId}" ${isChecked ? 'checked' : ''} ${isDisabled ? 'disabled' : ''} required />
 				<span class="form__radio-text">${date}</span>
+				${isDisabled ? '<span class="form__radio-status">Регистрация закрыта</span>' : ''}
 			`;
 
 			this.elements.dateOptions.appendChild(label);
 		});
 
 		// Устанавливаем первую дату по умолчанию
-		this.selectedDate = courseDates[0].textContent.trim();
+		this.selectedDate = defaultDateElement ? defaultDateElement.textContent.trim() : null;
 
 		// Слушаем изменение выбора даты
 		this.elements.dateOptions.addEventListener('change', (e) => {
@@ -275,6 +283,11 @@ class RegistrationForm {
 			return;
 		}
 
+		if (!this.selectedDate) {
+			this.showErrorMessage('Выберите доступную дату мероприятия');
+			return;
+		}
+
 		// Check if registration is enabled
 		if (!this.eventConfig.registrationEnabled) {
 			this.showErrorMessage('Регистрация на мероприятие временно недоступна');
@@ -408,8 +421,10 @@ export function initRegistrationForm() {
 	const forms = document.querySelectorAll('.registration-form');
 	if (forms.length > 0) {
 		forms.forEach((form) => {
-			const eventId = form.getAttribute('data-event-id');
+			const eventId = form.getAttribute('data-event-id') ||
+				form.closest('.user__block')?.getAttribute('data-event-id');
 			if (eventId) {
+				form.setAttribute('data-event-id', eventId);
 				new RegistrationForm(form, eventId);
 				console.log('Registration form initialized for event:', eventId);
 			}

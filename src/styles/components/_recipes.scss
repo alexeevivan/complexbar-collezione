@@ -1,0 +1,9 @@
+.card-container__empty {
+	width: 100%;
+	padding: calc(var(--index) * 4) 24px;
+	text-align: center;
+	font-family: "GTWalsheim Pro", sans-serif;
+	font-size: clamp(18px, 2vw, 28px);
+	font-weight: 300;
+	color: var(--mute);
+}
