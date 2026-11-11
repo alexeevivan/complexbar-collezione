@@ -85,6 +85,16 @@ module.exports = (env, argv) => {
 				chunks: ['main', 'calendar'],
 			}),
 			new HtmlWebpackPlugin({
+				template: './src/html/classes/primus-inter-pares.html',
+				filename: 'primus-inter-pares.html',
+				chunks: ['main'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/classes/le-classique.html',
+				filename: 'le-classique.html',
+				chunks: ['main'],
+			}),
+			new HtmlWebpackPlugin({
 				template: './src/html/classes/collaboration.html',
 				filename: 'collaboration.html',
 				chunks: ['main', 'collaboration'],

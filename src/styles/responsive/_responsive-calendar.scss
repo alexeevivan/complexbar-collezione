@@ -106,3 +106,25 @@
 		}
 	}
 }
+
+.course {
+
+	/* Mobile sizing */
+	@media (max-width: 960px) {
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		grid-template-columns: minmax(0, 430px);
+		gap: clamp(48px, 8vw, 80px);
+
+		.fxwrap {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.fx-lastname {
+			font-size: calc(var(--index) * 3);
+		}
+	}
+}
