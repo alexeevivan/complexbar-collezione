@@ -8,45 +8,94 @@ const BATCH = 3; // должно совпадать с :nth-child(n+4) в сти
 
 export function initCardReveal() {
 	const container = document.querySelector('.card-container__cocktails[data-reveal]');
-	if (!container) return;
+	if (!container) return undefined;
 
 	const items = Array.from(container.querySelectorAll('.card-container__item'));
+	const isDesktop = window.matchMedia('(min-width: 769px)').matches;
 	let shown = Math.min(BATCH, items.length);
+	let appearObserver;
+	let batchObserver;
+	let sentinel;
+
+	container.classList.remove('is-complete');
+
+	const cleanup = () => {
+		appearObserver?.disconnect();
+		batchObserver?.disconnect();
+		sentinel?.remove();
+		container.classList.remove('is-complete');
+	};
+
+	if (items.length === 0) {
+		container.classList.add('is-complete');
+		return cleanup;
+	}
 
 	// --- Анимация появления при входе карточки в экран ---
-	// Скрытые (display: none) карточки не пересекаются с экраном, поэтому
-	// наблюдатель сработает сам, как только карточка будет показана порцией.
-	const appearObserver = new IntersectionObserver((entries) => {
+	if (isDesktop) {
+		// На ПК наблюдаем строки по три карточки. Когда строка входит в viewport,
+		// проявляем её целиком с небольшим каскадом слева направо.
+		const rows = [];
+		for (let index = 0; index < items.length; index += BATCH) {
+			rows.push(items.slice(index, index + BATCH));
+		}
+
+		const rowByItem = new Map();
+		rows.forEach((row) => row.forEach((item) => rowByItem.set(item, row)));
+
+		appearObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (!entry.isIntersecting) return;
+
+				const row = rowByItem.get(entry.target);
+				row.forEach((item, itemIndex) => {
+					item.style.transitionDelay = `${itemIndex * 110}ms`;
+					item.classList.add('is-visible');
+					appearObserver.unobserve(item);
+				});
+			});
+		}, {
+			threshold: 0.15,
+			rootMargin: '0px 0px -8% 0px'
+		});
+
+		items.forEach((item) => appearObserver.observe(item));
+		container.classList.add('is-complete');
+		return cleanup;
+	}
+
+	// На мобильных скрытые (display: none) карточки не пересекаются с экраном,
+	// поэтому наблюдатель сработает сам после показа очередной порции.
+	appearObserver = new IntersectionObserver((entries) => {
 		const entering = entries.filter((entry) => entry.isIntersecting);
 
 		entering.forEach((entry, i) => {
-			// небольшой каскад, если в экран вошло сразу несколько карточек
 			entry.target.style.transitionDelay = `${i * 110}ms`;
 			entry.target.classList.add('is-visible');
 			appearObserver.unobserve(entry.target);
 		});
 	}, {
-		threshold: 0.15,                // карточка видна хотя бы на 15%
-		rootMargin: '0px 0px -8% 0px'   // чуть выше нижнего края, чтобы анимацию было видно
+		threshold: 0.15,
+		rootMargin: '0px 0px -8% 0px'
 	});
 
 	items.forEach((item) => appearObserver.observe(item));
 
 	// --- Порционный показ ---
-	const finish = (observer, sentinel) => {
-		if (observer) observer.disconnect();
-		if (sentinel) sentinel.remove();
+	const finish = () => {
+		batchObserver?.disconnect();
+		sentinel?.remove();
 		container.classList.add('is-complete');
 	};
 
 	// Всё помещается в первую порцию — сразу показываем футер
 	if (items.length <= BATCH) {
 		finish();
-		return;
+		return cleanup;
 	}
 
 	// Невидимый «маяк» сразу после списка карточек
-	const sentinel = document.createElement('div');
+	sentinel = document.createElement('div');
 	sentinel.className = 'card-container__sentinel';
 	sentinel.setAttribute('aria-hidden', 'true');
 	container.after(sentinel);
@@ -57,13 +106,13 @@ export function initCardReveal() {
 		shown += next.length;
 	};
 
-	const batchObserver = new IntersectionObserver((entries) => {
+	batchObserver = new IntersectionObserver((entries) => {
 		if (!entries[0].isIntersecting) return;
 
 		revealNext();
 
 		if (shown >= items.length) {
-			finish(batchObserver, sentinel);
+			finish();
 			return;
 		}
 
@@ -76,4 +125,5 @@ export function initCardReveal() {
 	});
 
 	batchObserver.observe(sentinel);
+	return cleanup;
 }

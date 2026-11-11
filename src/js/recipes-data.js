@@ -11,8 +11,8 @@ export const recipeCollections = {
 			image: 'assets/img/cocktails/odk-syrup/kroman-bottles.jpg',
 			alcoholic: true,
 			ingredients: [
-				'30 мл - Gin Mare',
-				'30 мл - Martini Fiero',
+				'30 мл - джин (предпочтителен Gin Mare)',
+				'30 мл - вермут Martini Fiero',
 				'30 мл - ODK Цветы Бузины',
 				'30 мл - ODK Lime Premium Sour'
 			],

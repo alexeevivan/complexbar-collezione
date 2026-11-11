@@ -1,6 +1,6 @@
 import { recipeCollections } from './recipes-data.js';
 
-function createRecipeCard(recipe) {
+export function createRecipeCard(recipe) {
 	const item = document.createElement('div');
 	item.className = 'card-container__item';
 
@@ -44,20 +44,25 @@ function createRecipeCard(recipe) {
 	return item;
 }
 
-export function initRecipeCatalog() {
-	const container = document.querySelector('[data-recipe-collection]');
-	if (!container) return;
-
-	const collectionId = container.dataset.recipeCollection;
-	const collection = recipeCollections[collectionId] || [];
-
+export function renderRecipeCards(container, collection, emptyMessage = 'Рецепты скоро появятся') {
 	if (collection.length === 0) {
-		const emptyMessage = document.createElement('p');
-		emptyMessage.className = 'card-container__empty';
-		emptyMessage.textContent = 'Рецепты скоро появятся';
-		container.replaceChildren(emptyMessage);
+		const message = document.createElement('p');
+		message.className = 'card-container__empty';
+		message.textContent = emptyMessage;
+		container.replaceChildren(message);
 		return;
 	}
 
 	container.replaceChildren(...collection.map(createRecipeCard));
+}
+
+export function initRecipeCatalog() {
+	const container = document.querySelector('[data-recipe-collection]');
+	if (!container) return null;
+
+	const collectionId = container.dataset.recipeCollection;
+	const collection = recipeCollections[collectionId] || [];
+
+	renderRecipeCards(container, collection);
+	return { container, collection };
 }

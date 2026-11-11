@@ -1,5 +1,5 @@
 <div class="page">
-	<header class="header">
+	<header class="header recipes-header">
 		<svg class="burger burger-rotate ham8" viewBox="0 0 100 100" width="80">
 			<path class="line top"
 				d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
@@ -81,35 +81,36 @@
 
 		<section class="card-container">
 			<div class="card-container__search">
-				<form action="/search" method="get">
+				<form role="search" data-recipe-search-form>
 					<label for="site-search">
-						Поиск по сайту:
+						Поиск по ингредиентам
 					</label>
-					<input type="search" id="site-search" name="q" placeholder="Что вы ищете?">
-					<button type="submit">
-						Найти
-					</button>
+					<div class="card-container__search-control">
+						<input type="search" id="site-search" name="q" placeholder="Введите название ингредиента..."
+							autocomplete="off" data-recipe-search>
+					</div>
 				</form>
 				<div class="card-container__search-suggestions">
-					<span>
+					<button type="button" data-search-suggestion="пандан">
 						пандан
-					</span>
-					<span>
+					</button>
+					<button type="button" data-search-suggestion="бобы тонка">
 						бобы тонка
-					</span>
-					<span>
-						агава
-					</span>
-					<span>
+					</button>
+					<button type="button" data-search-suggestion="lime premium sour">
+						lime premium sour
+					</button>
+					<button type="button" data-search-suggestion="цветы бузины">
 						цветы бузины
-					</span>
-					<span>
+					</button>
+					<button type="button" data-search-suggestion="фалернум">
 						фалернум
-					</span>
-					<span>
+					</button>
+					<button type="button" data-search-suggestion="гибискус">
 						гибискус
-					</span>
+					</button>
 				</div>
+				<p class="card-container__search-status" aria-live="polite" data-recipe-search-status></p>
 			</div>
 			<div class="card-container__cocktails" data-reveal data-recipe-collection="{{ collectionId }}">
 			</div>

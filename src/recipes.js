@@ -5,11 +5,23 @@ import { initHeaderMenu } from './js/header-menu.js';
 import { initHeaderScroll } from './js/header-scroll.js';
 import { initRecipeCatalog } from './js/recipe-catalog.js';
 import { initRecipeModal } from './js/recipe-modal.js';
+import { initRecipeSearch } from './js/recipe-search.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	initHeaderMenu();
 	initHeaderScroll();
-	initRecipeCatalog();
-	initCardReveal();
+	const catalog = initRecipeCatalog();
+	let destroyCardReveal = initCardReveal();
+
+	if (catalog) {
+		initRecipeSearch({
+			...catalog,
+			onResultsChange: () => {
+				destroyCardReveal?.();
+				destroyCardReveal = initCardReveal();
+			}
+		});
+	}
+
 	initRecipeModal();
 });
