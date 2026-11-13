@@ -305,7 +305,7 @@ p {
 			}
 
 			.flex--blaziken .flex__item--right {
-				background: linear-gradient(to bottom, var(--cherry-color), var(--cherry-color));
+				background: linear-gradient(to bottom, var(--cherry-color), var(--dark-color));
 
 				.some {
 					width: 100%;
@@ -322,11 +322,11 @@ p {
 			/* Dialga */
 
 			.flex--dialga .flex__item--left {
-				background: linear-gradient(to bottom, #c7892c, #0a0a0c);
+				background: linear-gradient(to bottom, #c4481c, #0a0a0c);
 			}
 
 			.flex--dialga .flex__item--right {
-				background: linear-gradient(to bottom, #a4a694, #0a0a0c);
+				background: linear-gradient(to bottom, #0a0a0c, #c4481c)
 			}
 
 			/* Zekrom */
