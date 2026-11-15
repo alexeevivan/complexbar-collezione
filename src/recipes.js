@@ -6,6 +6,7 @@ import { initHeaderScroll } from './js/header-scroll.js';
 import { initRecipeCatalog } from './js/recipe-catalog.js';
 import { initRecipeModal } from './js/recipe-modal.js';
 import { initRecipeSearch } from './js/recipe-search.js';
+import { initSuperjuiceCalculator } from './js/superjuice-calculator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	initHeaderMenu();
@@ -24,4 +25,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	initRecipeModal();
+	initSuperjuiceCalculator();
 });

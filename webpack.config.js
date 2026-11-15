@@ -149,6 +149,16 @@ module.exports = (env, argv) => {
 				filename: 'bubbledrops-recipes.html',
 				chunks: ['recipes'],
 			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/calculator/expert-studio-calculator.html',
+				filename: 'expert-studio-calculator.html',
+				chunks: ['recipes'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/calculator/super-juice.html',
+				filename: 'super-juice.html',
+				chunks: ['recipes'],
+			}),
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].[contenthash].css',
 			}),

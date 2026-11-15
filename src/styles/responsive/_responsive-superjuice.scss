@@ -1,0 +1,81 @@
+@media screen and (max-width: 768px) {
+	.superjuice-calculator {
+		padding: 0;
+
+		&__heading {
+			margin-bottom: 36px;
+		}
+
+		&__layout {
+			grid-template-columns: 1fr;
+		}
+
+		&__tabs {
+			grid-template-rows: none;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			min-height: 0;
+			padding: 8px;
+			border-radius: 24px;
+		}
+
+		&__tab {
+			grid-template-columns: 24px 1fr;
+			gap: 8px;
+			padding: 14px 12px;
+			border-radius: 16px;
+			font-size: 15px;
+
+			&:hover:not(.is-active) {
+				transform: none;
+			}
+
+			&[data-citrus="kumquat"] {
+				grid-column: 1 / -1;
+			}
+		}
+
+		&__panel {
+			padding: 24px 18px;
+			border-radius: 24px;
+		}
+
+		&__formula-mark {
+			width: 40px;
+			height: 40px;
+			font-size: 24px;
+		}
+
+		&__form {
+			grid-template-columns: 1fr;
+			gap: 10px;
+			padding-block: 32px;
+
+			>label {
+				padding-bottom: 0;
+			}
+		}
+
+		&__hint,
+		&__error {
+			grid-column: 1;
+		}
+
+		&__results {
+			grid-template-columns: 1fr;
+		}
+
+		&__result {
+			min-height: 118px;
+
+			&--water {
+				grid-column: 1;
+			}
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.superjuice-calculator__tab {
+		transition: none;
+	}
+}

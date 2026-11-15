@@ -1,0 +1,182 @@
+<div class="page">
+	<header class="header recipes-header">
+		<svg class="burger burger-rotate ham8" viewBox="0 0 100 100" width="80">
+			<path class="line top"
+				d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+			<path class="line middle" d="m 30,50 h 40" />
+			<path class="line bottom"
+				d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+		</svg>
+		<ul class="menu">
+			<li class="menu-item">
+				<a href="index.html" aria-label="Main page link">
+					главная
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="expert-studio.html" aria-label="Studion page link">
+					о студии
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="calendar.html" aria-label="Meetings page link">
+					мероприятия
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="collaboration.html" aria-label="Collaboration page link">
+					сотрудничество
+				</a>
+			</li>
+		</ul>
+		<ul class="header-container">
+			<li class="header-container__item additional">
+				<a href="index.html" aria-label="Main page link">
+					главная
+				</a>
+			</li>
+			<li class="header-container__item">
+				<a href="expert-studio.html" aria-label="Studion page link">
+					о студии
+				</a>
+			</li>
+			<li class="header-container__item">
+				<a href="calendar.html" aria-label="Meetings page link">
+					мероприятия
+				</a>
+			</li>
+			<li class="header-container__item">
+				<a href="collaboration.html" aria-label="Collaboration page link">
+					сотрудничество
+				</a>
+			</li>
+		</ul>
+	</header>
+	<main class="main recipes-page">
+		<section class="intro calculator-intro">
+			<div class="top-divider">
+				<span class="line"></span>
+				<span class="dot"></span>
+				<span class="line"></span>
+			</div>
+
+			<div class="into__badge">
+				<p class="eyebrow">
+					super juice
+				</p>
+				<h1 class="recipes-title">
+					Рассчитайте ингредиенты
+				</h1>
+
+				<div class="recipes-content">
+					<p>
+						Выберите цитрус и укажите вес цедры. Количество кислот и воды пересчитается автоматически.
+					</p>
+				</div>
+			</div>
+
+			<div class="bottom-divider">
+				<span class="line"></span>
+				<span class="dot"></span>
+				<span class="line"></span>
+			</div>
+		</section>
+		<section class="calculator superjuice-calculator" id="superjuice-calculator" data-superjuice-calculator>
+
+			<div class="superjuice-calculator__layout">
+				<div class="superjuice-calculator__tabs" role="tablist" aria-label="Выбор цитруса">
+					<button class="superjuice-calculator__tab is-active" type="button" role="tab" aria-selected="true"
+						tabindex="0" data-citrus="lemon">
+						<span>01</span>
+						Лимон
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-citrus="lime">
+						<span>02</span>
+						Лайм
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-citrus="orange">
+						<span>03</span>
+						Апельсин
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-citrus="grapefruit">
+						<span>04</span>
+						Грейпфрут
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-citrus="kumquat">
+						<span>05</span>
+						Кумкват
+					</button>
+				</div>
+
+				<div class="superjuice-calculator__panel" role="tabpanel">
+					<div class="superjuice-calculator__panel-head">
+						<div>
+							<p>
+								Выбранный цитрус
+							</p>
+							<h3 data-citrus-name>
+								Лимон
+							</h3>
+						</div>
+						<div class="superjuice-calculator__formula-mark" aria-hidden="true">
+							<img src="assets/svg/sj.svg" alt="Super Juice image">
+						</div>
+					</div>
+
+					<form class="superjuice-calculator__form" novalidate>
+						<label for="superjuice-weight" data-weight-label>
+							Вес цедры
+						</label>
+						<div class="superjuice-calculator__input-wrap">
+							<input id="superjuice-weight" name="weight" type="number" min="0" step="0.01"
+								inputmode="decimal" autocomplete="off" placeholder="0"
+								aria-describedby="superjuice-hint superjuice-error">
+							<span>
+								г
+							</span>
+						</div>
+						<p id="superjuice-hint" class="superjuice-calculator__hint" data-weight-hint>
+							Взвесьте только тонко снятую цедру без белой части.
+						</p>
+						<p id="superjuice-error" class="superjuice-calculator__error" data-calculator-error
+							aria-live="polite"></p>
+					</form>
+
+					<div class="superjuice-calculator__results" aria-live="polite" aria-atomic="true">
+						<div class="superjuice-calculator__result" data-result="citric">
+							<span>Лимонная кислота</span>
+							<p><output data-output="citric">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-result="malic">
+							<span>Яблочная кислота</span>
+							<p><output data-output="malic">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-result="ascorbic" hidden>
+							<span>Аскорбиновая кислота</span>
+							<p><output data-output="ascorbic">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-result="msg" hidden>
+							<span>Глутамат натрия (MSG)</span>
+							<p><output data-output="msg">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result superjuice-calculator__result--water"
+							data-result="water">
+							<span>Вода</span>
+							<p><output data-output="water">0,00</output><small>г</small></p>
+						</div>
+					</div>
+
+					<button class="superjuice-calculator__reset" type="button" data-calculator-reset>
+						Сбросить расчёт
+					</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<include src="includes/footer.html"></include>
+</div>

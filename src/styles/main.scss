@@ -422,6 +422,7 @@ p {
 			margin: 0 auto;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(4, 1fr);
 			gap: 22px;
 			overflow: hidden;
 			max-height: 0;
@@ -451,6 +452,10 @@ p {
 				transition: transform 0.5s cubic-bezier(0.6, 0, 0.2, 1);
 				position: relative;
 				overflow: hidden;
+
+				&:nth-child(10) {
+					grid-column: span 3 / span 3;
+				}
 
 				.box__top {
 					display: flex;
