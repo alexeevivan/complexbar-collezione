@@ -1,0 +1,286 @@
+<div class="page">
+	<header class="header recipes-header">
+		<svg class="burger burger-rotate ham8" viewBox="0 0 100 100" width="80">
+			<path class="line top"
+				d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+			<path class="line middle" d="m 30,50 h 40" />
+			<path class="line bottom"
+				d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+		</svg>
+		<ul class="menu">
+			<li class="menu-item">
+				<a href="index.html" aria-label="Main page link">
+					главная
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="expert-studio.html" aria-label="Studion page link">
+					о студии
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="calendar.html" aria-label="Meetings page link">
+					мероприятия
+				</a>
+			</li>
+			<li class="menu-item">
+				<a href="collaboration.html" aria-label="Collaboration page link">
+					сотрудничество
+				</a>
+			</li>
+		</ul>
+		<ul class="header-container">
+			<li class="header-container__item additional">
+				<a href="index.html" aria-label="Main page link">
+					главная
+				</a>
+			</li>
+			<li class="header-container__item">
+				<a href="expert-studio.html" aria-label="Studion page link">
+					о студии
+				</a>
+			</li>
+			<li class="header-container__item">
+				<a href="calendar.html" aria-label="Meetings page link">
+					мероприятия
+				</a>
+			</li>
+			<li class="header-container__item">
+				<a href="collaboration.html" aria-label="Collaboration page link">
+					сотрудничество
+				</a>
+			</li>
+		</ul>
+	</header>
+	<main class="main recipes-page">
+		<section class="intro calculator-intro">
+			<div class="top-divider">
+				<span class="line"></span>
+				<span class="dot"></span>
+				<span class="line"></span>
+			</div>
+
+			<div class="into__badge">
+				<p class="eyebrow">
+					syrups
+				</p>
+				<h1 class="recipes-title">
+					Рассчитайте ингредиенты
+				</h1>
+
+				<div class="recipes-content">
+					<p>
+						Постоянство сладости Ваших сиропов зависит от правильно подобранной рецептуры.
+					</p>
+				</div>
+			</div>
+
+			<div class="bottom-divider">
+				<span class="line"></span>
+				<span class="dot"></span>
+				<span class="line"></span>
+			</div>
+		</section>
+		<section class="calculator superjuice-calculator syrup-calculator" id="syrup-calculator" data-syrup-calculator>
+			<div class="superjuice-calculator__layout">
+				<div class="superjuice-calculator__tabs" role="tablist" aria-label="Выбор калькулятора сиропа">
+					<button class="superjuice-calculator__tab is-active" type="button" role="tab" aria-selected="true"
+						tabindex="0" data-syrup-mode="simple">
+						<span>01</span>
+						Базовый
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-syrup-mode="orgeat">
+						<span>
+							02
+						</span>
+						Орже
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-syrup-mode="ginger">
+						<span>
+							03
+						</span>
+						Имбирный
+					</button>
+					<button class="superjuice-calculator__tab" type="button" role="tab" aria-selected="false"
+						tabindex="-1" data-syrup-mode="gomme">
+						<span>
+							04
+						</span>
+						Гомме
+					</button>
+				</div>
+
+				<div class="superjuice-calculator__panel" role="tabpanel">
+					<div class="superjuice-calculator__panel-head">
+						<div>
+							<p>
+								Выбранный калькулятор
+							</p>
+							<h3 data-syrup-mode-name>
+								Базовый сироп
+							</h3>
+						</div>
+						<div class="superjuice-calculator__formula-mark syrup-calculator__ratio" aria-hidden="true"
+							data-syrup-mark>
+							1:1
+						</div>
+					</div>
+
+					<form class="superjuice-calculator__form" data-syrup-form novalidate>
+						<div class="syrup-calculator__options" data-simple-options>
+							<label for="syrup-variant">
+								Тип и сладость
+							</label>
+							<div class="syrup-calculator__select-wrap">
+								<input name="syrup-variant" type="hidden" value="simple" data-syrup-variant>
+								<div class="syrup-calculator__select" data-syrup-select>
+									<button class="syrup-calculator__select-trigger" id="syrup-variant" type="button"
+										aria-haspopup="listbox" aria-expanded="false" aria-controls="syrup-variant-list"
+										data-syrup-select-trigger>
+										<span data-syrup-select-value>Симпл · 1:1</span>
+										<i aria-hidden="true"></i>
+									</button>
+									<ul class="syrup-calculator__select-list" id="syrup-variant-list" role="listbox"
+										aria-label="Тип и сладость сиропа" aria-hidden="true" data-syrup-select-list>
+										<li class="is-selected" role="option" aria-selected="true" tabindex="-1"
+											data-syrup-option="simple">
+											<span>Симпл</span><small>1:1</small>
+										</li>
+										<li role="option" aria-selected="false" tabindex="-1" data-syrup-option="rich">
+											<span>Густой</span><small>2:1</small>
+										</li>
+										<li role="option" aria-selected="false" tabindex="-1"
+											data-syrup-option="semi-rich">
+											<span>Полугустой</span><small>3:2</small>
+										</li>
+										<li role="option" aria-selected="false" tabindex="-1" data-syrup-option="honey">
+											<span>Медовый</span><small></small>
+										</li>
+										<li role="option" aria-selected="false" tabindex="-1" data-syrup-option="agave">
+											<span>Агавовый</span><small></small>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="syrup-calculator__options syrup-calculator__ginger-options" data-ginger-options
+							hidden>
+							<div class="syrup-calculator__intensity">
+								<label for="ginger-intensity">Интенсивность</label>
+								<input id="ginger-intensity" type="range" min="0" max="2" step="1" value="1"
+									aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="Средний"
+									data-ginger-intensity>
+								<div class="syrup-calculator__intensity-labels" aria-hidden="true">
+									<span>Мягкий</span>
+									<span>Средний</span>
+									<span>Острый</span>
+								</div>
+							</div>
+							<label class="syrup-calculator__checkbox" for="honey-ginger">
+								<input id="honey-ginger" type="checkbox" data-honey-ginger>
+								<span aria-hidden="true"></span>
+								Медовая версия
+							</label>
+						</div>
+
+						<label for="syrup-weight" data-syrup-input-label>
+							Вес подсластителя
+						</label>
+						<div class="superjuice-calculator__input-wrap">
+							<input id="syrup-weight" name="weight" type="number" min="0" step="0.01" inputmode="decimal"
+								autocomplete="off" placeholder="0" aria-describedby="syrup-hint syrup-error"
+								data-syrup-weight>
+							<span>
+								г
+							</span>
+						</div>
+						<p id="syrup-hint" class="superjuice-calculator__hint" data-syrup-hint>
+							Укажите вес сахара или другого подсластителя.
+						</p>
+						<p id="syrup-error" class="superjuice-calculator__error" data-syrup-error aria-live="polite">
+						</p>
+					</form>
+
+					<div class="superjuice-calculator__results" aria-live="polite" aria-atomic="true">
+						<div class="superjuice-calculator__result syrup-calculator__result--full syrup-calculator__result--accent"
+							data-syrup-result="simple-water">
+							<span>
+								Необходимое количество воды
+							</span>
+							<p>
+								<output data-syrup-output="simple-water">0</output>
+								<small>г</small>
+							</p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="orgeat-sugar" hidden>
+							<span>
+								Сахар
+							</span>
+							<p>
+								<output data-syrup-output="orgeat-sugar">0</output>
+								<small>г</small>
+							</p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="orgeat-gum" hidden>
+							<span>Гуммиарабик</span>
+							<p><output data-syrup-output="orgeat-gum">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="orgeat-xanthan" hidden>
+							<span>Ксантановая камедь</span>
+							<p><output data-syrup-output="orgeat-xanthan">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="orgeat-blossom" hidden>
+							<span>Rose или fleur d'orange вода</span>
+							<p><output data-syrup-output="orgeat-blossom">0,00</output><small>г</small></p>
+						</div>
+
+						<div class="superjuice-calculator__result" data-syrup-result="ginger-juice" hidden>
+							<span>Имбирный сок</span>
+							<p><output data-syrup-output="ginger-juice">0</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="ginger-water" hidden>
+							<span>Вода</span>
+							<p><output data-syrup-output="ginger-water">0</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="ginger-sugar" hidden>
+							<span>Сахар</span>
+							<p><output data-syrup-output="ginger-sugar">0</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="ginger-honey" hidden>
+							<span>Мёд</span>
+							<p><output data-syrup-output="ginger-honey">0</output><small>г</small></p>
+						</div>
+
+						<div class="superjuice-calculator__result" data-syrup-result="gomme-gum" hidden>
+							<span>Гуммиарабик</span>
+							<p><output data-syrup-output="gomme-gum">0,00</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result" data-syrup-result="gomme-hydration-water" hidden>
+							<span>Вода для гидратации гуммиарабика</span>
+							<p><output data-syrup-output="gomme-hydration-water">0</output><small>г</small></p>
+						</div>
+						<div class="superjuice-calculator__result syrup-calculator__result--full syrup-calculator__result--accent"
+							data-syrup-result="gomme-sugar-water" hidden>
+							<span>Вода для растворения сахара</span>
+							<p><output data-syrup-output="gomme-sugar-water">0</output><small>г</small></p>
+						</div>
+					</div>
+
+					<p class="syrup-calculator__note" data-syrup-note>
+						Смешайте все ингредиенты. При работе с мёдом не используйте воду горячее 60 °C. Для более
+						длительного хранения сиропа агавы используйте дистиллированную воду.
+					</p>
+
+					<button class="superjuice-calculator__reset" type="button" data-syrup-reset>
+						Сбросить расчёт
+					</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<include src="includes/footer.html"></include>
+</div>

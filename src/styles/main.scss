@@ -406,6 +406,7 @@ p {
 			font-family: "Montserrat", sans-serif;
 			font-weight: 600;
 			transform-origin: center;
+			animation: hidden-content-pulse 2.6s ease-in-out infinite;
 
 			&:hover {
 				opacity: 0.7;
@@ -423,77 +424,6 @@ p {
 				filter: blur(8px);
 				opacity: 0.3;
 			}
-		}
-
-		.comment {
-			position: absolute;
-			top: 50%;
-			left: calc(100% + clamp(14px, 2vw, 32px));
-			z-index: 2;
-			width: clamp(150px, 16vw, 220px);
-			transform: translateY(-50%);
-			pointer-events: none;
-			transition: opacity 0.35s ease, visibility 0.35s ease;
-
-			blockquote {
-				font-family: "SequentialistBB", cursive;
-				font-size: clamp(18px, 1.6vw, 25px);
-
-				&.bubble {
-					position: relative;
-					display: grid;
-					place-items: center;
-					min-height: 88px;
-					margin: 0;
-					padding: 18px 24px;
-					border: 1px dashed var(--dark-color);
-					border-radius: 24%;
-					background: var(--main-color);
-					box-shadow: 0 12px 24px -18px rgb(20 20 17 / 70%);
-					color: var(--dark-color);
-					text-align: center;
-					line-height: 1.05;
-					animation: comment-nudge 2.6s ease-in-out infinite;
-
-					&::before,
-					&::after {
-						content: "";
-						position: absolute;
-						top: 50%;
-						right: 100%;
-						width: 0;
-						height: 0;
-						transform: translateY(-50%);
-						border-top: 12px solid transparent;
-						border-bottom: 12px solid transparent;
-					}
-
-					&::before {
-						border-right: 20px solid var(--dark-color);
-					}
-
-					&::after {
-						margin-right: -4px;
-						border-top-width: 9px;
-						border-bottom-width: 9px;
-						border-right: 16px solid var(--main-color);
-					}
-				}
-
-				em {
-					display: block;
-					font-style: italic;
-				}
-			}
-		}
-
-		.hidden-content-control:not(.has-interacted) .hidden-content {
-			animation: hidden-content-pulse 2.6s ease-in-out infinite;
-		}
-
-		.hidden-content-control.has-interacted .comment {
-			opacity: 0;
-			visibility: hidden;
 		}
 
 		.content {
@@ -921,22 +851,6 @@ p {
 	}
 }
 
-@keyframes comment-nudge {
-
-	0%,
-	100% {
-		transform: translateX(0) rotate(-2deg);
-	}
-
-	45% {
-		transform: translateX(-9px) rotate(1deg);
-	}
-
-	60% {
-		transform: translateX(-4px) rotate(-1deg);
-	}
-}
-
 @keyframes hidden-content-pulse {
 
 	0%,
@@ -954,8 +868,7 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
 
-	.hidden-content-control .hidden-content,
-	.comment blockquote.bubble {
+	.hidden-content {
 		animation: none !important;
 	}
 }

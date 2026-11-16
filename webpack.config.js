@@ -160,6 +160,26 @@ module.exports = (env, argv) => {
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
+				template: './src/html/calculator/abv.html',
+				filename: 'abv.html',
+				chunks: ['recipes'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/calculator/cordial.html',
+				filename: 'cordial.html',
+				chunks: ['recipes'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/calculator/soda.html',
+				filename: 'soda.html',
+				chunks: ['recipes'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/calculator/syrup.html',
+				filename: 'syrup.html',
+				chunks: ['recipes'],
+			}),
+			new HtmlWebpackPlugin({
 				template: './src/html/calculator/clarification.html',
 				filename: 'clarification.html',
 				chunks: ['recipes'],

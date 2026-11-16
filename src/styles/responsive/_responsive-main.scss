@@ -125,40 +125,6 @@
 				width: 100%;
 			}
 
-			.comment {
-				top: auto;
-				bottom: calc(100% + 10px);
-				left: 50%;
-				width: min(180px, 72vw);
-				transform: translateX(-50%);
-
-				blockquote.bubble {
-					min-height: 72px;
-					padding: 14px 20px;
-					font-size: 18px;
-
-					&::before,
-					&::after {
-						top: 100%;
-						right: auto;
-						left: 50%;
-						transform: translateX(-50%);
-						border-right: 10px solid transparent;
-						border-left: 10px solid transparent;
-						border-bottom: 0;
-					}
-
-					&::before {
-						border-top: 18px solid var(--dark-color);
-					}
-
-					&::after {
-						margin: -3px 0 0;
-						border-top: 15px solid var(--main-color);
-					}
-				}
-			}
-
 			.content {
 				// display: none;
 				display: flex;
