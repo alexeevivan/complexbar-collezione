@@ -1,0 +1,28 @@
+.clarification-calculator {
+	.superjuice-calculator__tabs {
+		grid-template-rows: 1fr;
+	}
+
+	.superjuice-calculator__tab {
+		cursor: default;
+
+		&:hover {
+			transform: none;
+		}
+	}
+
+	.superjuice-calculator__results {
+		grid-template-columns: 1fr;
+	}
+
+	&__result {
+		min-height: 170px;
+		background: var(--dark-color);
+		color: var(--main-color);
+
+		>span,
+		small {
+			color: color-mix(in srgb, var(--main-color) 62%, transparent);
+		}
+	}
+}

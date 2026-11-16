@@ -7,6 +7,7 @@ import { initRecipeCatalog } from './js/recipe-catalog.js';
 import { initRecipeModal } from './js/recipe-modal.js';
 import { initRecipeSearch } from './js/recipe-search.js';
 import { initSuperjuiceCalculator } from './js/superjuice-calculator.js';
+import { initClarificationCalculator } from './js/clarification-calculator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	initHeaderMenu();
@@ -26,4 +27,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	initRecipeModal();
 	initSuperjuiceCalculator();
+	initClarificationCalculator();
 });

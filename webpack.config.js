@@ -159,6 +159,11 @@ module.exports = (env, argv) => {
 				filename: 'super-juice.html',
 				chunks: ['recipes'],
 			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/calculator/clarification.html',
+				filename: 'clarification.html',
+				chunks: ['recipes'],
+			}),
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].[contenthash].css',
 			}),

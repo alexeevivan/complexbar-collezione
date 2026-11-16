@@ -46,6 +46,7 @@ $('.hidden-content').on('click', function (e) {
 	const $content = $('.content');
 	const $button = $(this);
 	const $divider = $('.bottom-divider');
+	const $control = $button.closest('.hidden-content-control');
 
 	// Сохраняем текущий текст
 	const currentText = $button.text().trim();
@@ -69,5 +70,7 @@ $('.hidden-content').on('click', function (e) {
 
 	$content.toggleClass('is-visible');
 	$button.toggleClass('is-expanded');
+	$button.attr('aria-expanded', $content.hasClass('is-visible'));
+	$control.addClass('has-interacted');
 	$divider.toggleClass('has-spacing');
 });

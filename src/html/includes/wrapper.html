@@ -253,10 +253,17 @@
 			<span class="dot"></span>
 			<span class="line"></span>
 		</div>
-		<button class="hidden-content">
-			Эксклюзивные рецепты
-		</button>
-		<div class="content">
+		<div class="hidden-content-control">
+			<button class="hidden-content" type="button" aria-expanded="false" aria-controls="exclusive-recipes">
+				Эксклюзивные рецепты
+			</button>
+			<section class="comment" aria-hidden="true">
+				<blockquote class="speech bubble">
+					Press <em>me</em>
+				</blockquote>
+			</section>
+		</div>
+		<div class="content" id="exclusive-recipes">
 			<div class="box">
 				<div class="box__top">
 					<div class="box__logo osnova">
