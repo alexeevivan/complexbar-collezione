@@ -14,7 +14,8 @@ module.exports = (env, argv) => {
 			recipes: './src/recipes.js',
 			calendar: './src/calendar.js',
 			collaboration: './src/collab.js',
-			expert: './src/expert.js'
+			expert: './src/expert.js',
+			gomel: './src/gomel.js'
 		},
 		output: {
 			path: path.resolve(__dirname, 'dist'),
@@ -153,6 +154,11 @@ module.exports = (env, argv) => {
 				template: './src/html/calculator/expert-studio-calculator.html',
 				filename: 'expert-studio-calculator.html',
 				chunks: ['recipes'],
+			}),
+			new HtmlWebpackPlugin({
+				template: './src/html/gomel-reg.html',
+				filename: 'gomel-reg.html',
+				chunks: ['gomel'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/super-juice.html',

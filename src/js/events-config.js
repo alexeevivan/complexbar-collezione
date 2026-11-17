@@ -49,6 +49,12 @@ export const EVENTS_CONFIG = {
 		title: 'Lorem ipsum dolor sit amet consectetur',
 		registrationEnabled: true,
 		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
+	},
+	'gomel-drinks-training': {
+		eventId: 'gomel-drinks-training',
+		title: 'Напитки. И как их смешивать — Гомель',
+		registrationEnabled: true,
+		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
 	}
 };
 

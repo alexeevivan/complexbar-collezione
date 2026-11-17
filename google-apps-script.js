@@ -20,7 +20,8 @@ const CONFIG = {
 		'december-event-1',
 		'december-event-2',
 		'january-event-1',
-		'january-event-2'
+		'january-event-2',
+		'gomel-drinks-training'
 	],
 	// Даты, которые остаются видимыми на сайте, но закрыты для регистрации
 	CLOSED_EVENT_DATES: {

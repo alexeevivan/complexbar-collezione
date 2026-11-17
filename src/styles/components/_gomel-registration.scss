@@ -1,0 +1,58 @@
+.page .main.gomel-page__main {
+	.user.gomel-registration {
+		display: grid;
+		grid-template: "month" auto / minmax(0, 760px);
+		justify-content: center;
+		min-height: 0;
+		padding-top: clamp(32px, 6vw, 88px);
+		padding-bottom: clamp(24px, 4vw, 64px);
+		scroll-margin-top: 112px;
+
+		.user__month {
+			width: 100%;
+		}
+
+		.user__block {
+			min-width: 0;
+			padding: clamp(32px, 5vw, 64px);
+		}
+
+		.user__date {
+			width: auto;
+			min-width: 180px;
+			padding: 8px 20px 6px;
+
+			span {
+				font-size: clamp(11px, 0.9vw, 14px);
+				white-space: nowrap;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.page .main.gomel-page__main {
+		.user.gomel-registration {
+			padding-top: 36px;
+
+			.user__block {
+				padding: 32px 24px;
+			}
+
+			.user__date {
+				position: static;
+				align-self: flex-start;
+				width: auto;
+				min-width: 0;
+				height: auto;
+				margin-bottom: 24px;
+				padding: 8px 14px;
+				border: 1px solid rgb(20 20 22 / 12%);
+				border-radius: 999px;
+				background: rgb(255 255 255 / 45%);
+				line-height: 1.4;
+				mask: none;
+			}
+		}
+	}
+}
