@@ -23,7 +23,7 @@ export const EVENTS_CONFIG = {
 	'november-event-2': {
 		eventId: 'november-event-2',
 		title: 'Современный бар как твист на классику смешанного мира',
-		registrationEnabled: true,
+		registrationEnabled: false,
 		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
 	},
 	'december-event-1': {
