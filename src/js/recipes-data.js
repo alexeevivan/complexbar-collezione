@@ -7,8 +7,8 @@ export const recipeCollections = {
 		{
 			id: 'k-roman',
 			title: 'K & Roman',
-			cardImage: 'assets/img/cocktails/odk-syrup/kroman.jpeg',
-			image: 'assets/img/cocktails/odk-syrup/kroman-bottles.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/kroman.jpeg',
+			image: '../assets/img/cocktails/odk-syrup/kroman-bottles.jpg',
 			alcoholic: true,
 			ingredients: [
 				'30 мл - джин (предпочтителен Gin Mare)',
@@ -22,8 +22,8 @@ export const recipeCollections = {
 		{
 			id: 'virginious-bana-bana',
 			title: 'Virginious Bana-Bana',
-			cardImage: 'assets/img/cocktails/odk-syrup/virgin-bana-bana.jpg',
-			image: 'assets/img/cocktails/odk-syrup/virgin-bana-bana.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/virgin-bana-bana.jpg',
+			image: '../assets/img/cocktails/odk-syrup/virgin-bana-bana.jpg',
 			alcoholic: false,
 			ingredients: [
 				'120 мл - Колд брю Ройбос (Ройбуш)',
@@ -37,8 +37,8 @@ export const recipeCollections = {
 		{
 			id: 'blue-ice-latte',
 			title: 'Blue Ice Latte',
-			cardImage: 'assets/img/cocktails/odk-syrup/blue-ice-latte.jpg',
-			image: 'assets/img/cocktails/odk-syrup/blue-ice-latte-modal.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/blue-ice-latte.jpg',
+			image: '../assets/img/cocktails/odk-syrup/blue-ice-latte-modal.jpg',
 			alcoholic: false,
 			ingredients: [
 				'80 мл - Молоко',
@@ -52,8 +52,8 @@ export const recipeCollections = {
 		{
 			id: 'rose-winter',
 			title: 'Rose Winter',
-			cardImage: 'assets/img/cocktails/odk-syrup/rose-winter.jpg',
-			image: 'assets/img/cocktails/odk-syrup/rose-winter-modal.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/rose-winter.jpg',
+			image: '../assets/img/cocktails/odk-syrup/rose-winter-modal.jpg',
 			alcoholic: true,
 			ingredients: [
 				'40 мл - Бурбон',
@@ -68,8 +68,8 @@ export const recipeCollections = {
 		{
 			id: 'fruity-spice-latte',
 			title: 'Pumpkin Spice Latte',
-			cardImage: 'assets/img/cocktails/odk-syrup/fruity-pumpkin-spice-latte.png',
-			image: 'assets/img/cocktails/odk-syrup/fruity-pumpkin-spice-latte-modal.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/fruity-pumpkin-spice-latte.png',
+			image: '../assets/img/cocktails/odk-syrup/fruity-pumpkin-spice-latte-modal.jpg',
 			alcoholic: false,
 			ingredients: [
 				'120 мл - Молоко',
@@ -83,8 +83,8 @@ export const recipeCollections = {
 		{
 			id: 'green-tower',
 			title: 'Green Tower',
-			cardImage: 'assets/img/cocktails/odk-syrup/green-tower.jpg',
-			image: 'assets/img/cocktails/odk-syrup/green-tower.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/green-tower.jpg',
+			image: '../assets/img/cocktails/odk-syrup/green-tower.jpg',
 			alcoholic: false,
 			ingredients: [
 				'20 мл - ODK Lime Premium Sour',
@@ -98,8 +98,8 @@ export const recipeCollections = {
 		{
 			id: 'moscow-blossom',
 			title: 'Moscow Blossom',
-			cardImage: 'assets/img/cocktails/odk-syrup/moscow-blossom.jpg',
-			image: 'assets/img/cocktails/odk-syrup/moscow-blossom-modal.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/moscow-blossom.jpg',
+			image: '../assets/img/cocktails/odk-syrup/moscow-blossom-modal.jpg',
 			alcoholic: true,
 			ingredients: [
 				'30 мл - Джин',
@@ -114,8 +114,8 @@ export const recipeCollections = {
 		{
 			id: 'bana-bana',
 			title: 'Bana-bana',
-			cardImage: 'assets/img/cocktails/odk-syrup/bana-bana.jpg',
-			image: 'assets/img/cocktails/odk-syrup/bana-bana.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/bana-bana.jpg',
+			image: '../assets/img/cocktails/odk-syrup/bana-bana.jpg',
 			alcoholic: true,
 			ingredients: [
 				'100 мл - Virginious Bana-Bana',
@@ -128,8 +128,8 @@ export const recipeCollections = {
 		{
 			id: 'melony',
 			title: 'Rosy Melony',
-			cardImage: 'assets/img/cocktails/odk-syrup/melony.jpg',
-			image: 'assets/img/cocktails/odk-syrup/melony.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/melony.jpg',
+			image: '../assets/img/cocktails/odk-syrup/melony.jpg',
 			alcoholic: true,
 			ingredients: [
 				'60 мл - Джин',
@@ -143,8 +143,8 @@ export const recipeCollections = {
 		{
 			id: 'santas-pipe',
 			title: "Santa's Pipe",
-			cardImage: 'assets/img/cocktails/odk-syrup/santas-pipe.jpg',
-			image: 'assets/img/cocktails/odk-syrup/santas-pipe.jpg',
+			cardImage: '../assets/img/cocktails/odk-syrup/santas-pipe.jpg',
+			image: '../assets/img/cocktails/odk-syrup/santas-pipe.jpg',
 			alcoholic: true,
 			ingredients: [
 				'45 мл - Джин',

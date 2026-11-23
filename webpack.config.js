@@ -75,119 +75,127 @@ module.exports = (env, argv) => {
 		},
 
 		plugins: [
+			// Главная страница раздела: /expert-studio/main/
 			new HtmlWebpackPlugin({
 				template: './src/html/index.html',
-				filename: 'index.html',
+				filename: 'main/index.html',
 				chunks: ['main'],
+			}),
+			// Корень раздела /expert-studio/ — служебный редирект на main/
+			new HtmlWebpackPlugin({
+				template: './src/html/root-redirect.html',
+				filename: 'index.html',
+				inject: false,
+				chunks: [],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/classes/calendar.html',
-				filename: 'calendar.html',
+				filename: 'calendar/index.html',
 				chunks: ['main', 'calendar'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/classes/primus-inter-pares.html',
-				filename: 'primus-inter-pares.html',
+				filename: 'primus-inter-pares/index.html',
 				chunks: ['main'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/classes/le-classique.html',
-				filename: 'le-classique.html',
+				filename: 'le-classique/index.html',
 				chunks: ['main'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/classes/collaboration.html',
-				filename: 'collaboration.html',
+				filename: 'collaboration/index.html',
 				chunks: ['main', 'collaboration'],
 			}),
 			new HtmlWebpackPlugin({
-				template: './src/html/classes/expert-studio.html',
-				filename: 'expert-studio.html',
+				template: './src/html/classes/about.html',
+				filename: 'about/index.html',
 				chunks: ['main', 'expert'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-syrup-recipes.html',
-				filename: 'pd-syrup-recipes.html',
+				filename: 'pd-syrup-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-puree-recipes.html',
-				filename: 'pd-puree-recipes.html',
+				filename: 'pd-puree-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/pd-drinkbase-recipes.html',
-				filename: 'pd-drinkbase-recipes.html',
+				filename: 'pd-drinkbase-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/odk-syrup-recipes.html',
-				filename: 'odk-syrup-recipes.html',
+				filename: 'odk-syrup-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/odk-puree-recipes.html',
-				filename: 'odk-puree-recipes.html',
+				filename: 'odk-puree-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/code-recipes.html',
-				filename: 'code-recipes.html',
+				filename: 'code-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/osnova-recipes.html',
-				filename: 'osnova-recipes.html',
+				filename: 'osnova-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/drinksome-recipes.html',
-				filename: 'drinksome-recipes.html',
+				filename: 'drinksome-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/recipes/bubbledrops-recipes.html',
-				filename: 'bubbledrops-recipes.html',
+				filename: 'bubbledrops-recipes/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
-				template: './src/html/calculator/expert-studio-calculator.html',
-				filename: 'expert-studio-calculator.html',
+				template: './src/html/calculator/calculator.html',
+				filename: 'calculator/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/gomel-reg.html',
-				filename: 'gomel-reg.html',
+				filename: 'gomel-reg/index.html',
 				chunks: ['gomel'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/super-juice.html',
-				filename: 'super-juice.html',
+				filename: 'super-juice/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/abv.html',
-				filename: 'abv.html',
+				filename: 'abv/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/cordial.html',
-				filename: 'cordial.html',
+				filename: 'cordial/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/soda.html',
-				filename: 'soda.html',
+				filename: 'soda/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/syrup.html',
-				filename: 'syrup.html',
+				filename: 'syrup/index.html',
 				chunks: ['recipes'],
 			}),
 			new HtmlWebpackPlugin({
 				template: './src/html/calculator/clarification.html',
-				filename: 'clarification.html',
+				filename: 'clarification/index.html',
 				chunks: ['recipes'],
 			}),
 			new MiniCssExtractPlugin({

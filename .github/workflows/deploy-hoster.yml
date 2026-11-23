@@ -1,0 +1,66 @@
+name: Deploy to hoster.by
+
+# Собирает проект и заливает dist/ в папку /expert-studio/ на хостинге.
+# Портфолио (корень сайта) этот workflow не трогает: mirror работает только
+# внутри /expert-studio/, поэтому деплой CV-Bar и деплой Collezione независимы.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-expert-studio
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check build output
+        run: |
+          test -f dist/index.html
+          test -f dist/main/index.html
+          test -f dist/about/index.html
+
+      - name: Install FTP client
+        run: sudo apt-get update && sudo apt-get install --yes lftp
+
+      - name: Upload dist to /expert-studio/
+        env:
+          FTP_HOST: 87.232.64.171
+          FTP_USER: github-deploy
+          FTP_PASSWORD: ${{ secrets.HOSTER_FTP_PASSWORD }}
+        run: |
+          test -n "$FTP_PASSWORD"
+          lftp <<EOF
+          set cmd:fail-exit yes
+          set net:max-retries 3
+          set net:timeout 30
+          set ftp:ssl-allow no
+          open --user "$FTP_USER" --password "$FTP_PASSWORD" "ftp://$FTP_HOST"
+          mirror -R --delete --no-perms --parallel=3 dist/ /expert-studio/
+          cls -l /expert-studio/index.html
+          cls -l /expert-studio/main/index.html
+          bye
+          EOF
