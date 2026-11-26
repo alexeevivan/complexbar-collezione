@@ -1,0 +1,309 @@
+:root {
+	color-scheme: dark;
+	font-family: system-ui, sans-serif;
+	background: #181512;
+	color: #fff5e6;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.ultima {
+	margin: 0;
+	min-height: 100svh;
+	background-color: #02000D;
+}
+
+.ultima__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
+	align-items: start;
+	gap: clamp(1rem, 2.5vw, 3rem);
+	min-height: 100svh;
+	padding: clamp(1rem, 4vw, 5rem);
+
+	section {
+		height: 100%;
+	}
+
+	h1 {
+		font-family: "Futura PT", sans-serif;
+		font-size: clamp(2.75rem, 7vw, 6.5rem);
+		font-weight: 400;
+		line-height: 1;
+		margin: 0;
+	}
+
+	aside {
+		padding: 1rem;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background: transparent;
+	}
+
+	h2 {
+		margin: 0 0 1rem;
+	}
+}
+
+button,
+input {
+	font: inherit;
+}
+
+button {
+	border: 1px solid transparent;
+	border-radius: 0.5rem;
+	padding: 0.75rem 1rem;
+	background: #EDD9BB;
+	color: #21160c;
+	font-weight: 700;
+	cursor: pointer;
+	font-family: "Montserrat";
+	font-weight: 400;
+
+	&:hover:not(:disabled) {
+		background: #ffe1ad;
+	}
+
+	&:focus-visible {
+		outline: 2px solid #fff5e6;
+		outline-offset: 2px;
+	}
+}
+
+.ultima__board {
+	overflow-x: auto;
+	padding-bottom: 0.5rem;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	table {
+		width: 100%;
+		min-width: 32rem;
+		border-spacing: 0.3rem;
+		table-layout: fixed;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+
+		thead {
+			height: 10%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			tr {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				th {
+					&:first-child {
+						width: 26%;
+					}
+
+					width: 14.8%;
+				}
+			}
+		}
+
+		tbody {
+			height: 90%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			padding: 0 0 20% 0;
+
+			tr {
+				width: 100%;
+				display: flex;
+				align-items: center;
+
+				th {
+					width: 26%;
+				}
+
+				td {
+					width: 14.8%;
+				}
+			}
+		}
+	}
+
+	th:first-child {
+		width: 26%;
+		text-align: left;
+		font-family: "Montserrat";
+		font-weight: 200;
+	}
+
+	thead th {
+		color: #EEC07A;
+		padding-block: 0.5rem;
+		font-family: "Montserrat";
+		font-weight: 400;
+	}
+
+	button {
+		width: 90%;
+		margin: 0 5%;
+		min-height: clamp(3rem, 9vh, 6rem);
+		padding: 0.4rem;
+		background: #191A2E;
+		color: #fff5e6;
+		border-color: #E4D7CE5E;
+		font-size: clamp(1rem, 2vw, 1.8rem);
+		font-family: "Montserrat";
+		font-weight: 400;
+		transition: 1s ease;
+
+		&:hover:not(:disabled) {
+			border-color: #E4D7CE;
+			background: #071F41;
+			transition: 1s ease;
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: default;
+		}
+	}
+}
+
+#ultima-turn {
+	font-family: "Montserrat";
+	font-weight: 200;
+	color: #EEC07A;
+}
+
+#ultima-scores {
+	display: grid;
+	gap: 0.65rem;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+
+	li {
+		display: grid;
+		gap: 0.3rem;
+		border: 1px solid #765547;
+		border-radius: 0.65rem;
+		padding: 0.75rem;
+		overflow-wrap: anywhere;
+
+		&[aria-current] {
+			border-color: #E4D7CE;
+			background: #071F41;
+		}
+	}
+
+	strong {
+		font-size: 1.5rem;
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+.ultima__dialog {
+	width: min(42rem, calc(100% - 2rem));
+	max-height: calc(100% - 2rem);
+	padding: clamp(1.25rem, 4vw, 3rem);
+	border: 1px solid #EDD9BB;
+	border-radius: 1rem;
+	background: #00003C;
+	color: inherit;
+	overflow-wrap: anywhere;
+
+	&::backdrop {
+		background: rgb(15 11 9 / 78%);
+		backdrop-filter: blur(5px);
+	}
+
+	h2 {
+		margin-top: 0;
+		font-family: "Montserrat";
+		font-weight: 300;
+	}
+
+	h2:focus {
+		outline: none;
+	}
+
+	p {
+		font-size: calc(var(--index) * 1.25);
+		line-height: 1.5;
+		font-family: "Montserrat";
+		font-weight: 200;
+	}
+
+	form,
+	label {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	form {
+		gap: 1rem;
+	}
+
+	label {
+		font-family: "Montserrat";
+		font-weight: 200;
+	}
+
+	input {
+		min-width: 0;
+		padding: 0.65rem;
+		border: 1px solid #edd9bb;
+		background-color: transparent;
+		border-radius: 0.5rem;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.ultima__answer {
+	border-left: 3px solid #008802;
+	padding-left: 0.75rem;
+	color: #00ff04;
+	font-weight: 600 !important;
+}
+
+.ultima__team {
+	color: #efc88a;
+}
+
+.ultima__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+
+.ultima__actions button {
+	max-width: 100%;
+}
+
+.ultima__wrong {
+	background: #f2aba1;
+}
+
+@media (max-width: 48rem) {
+	.ultima__layout {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	#ultima-scores {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}

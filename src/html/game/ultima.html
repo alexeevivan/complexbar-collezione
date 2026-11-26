@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ultima — командная игра</title>
+</head>
+
+<body class="ultima">
+	<main class="ultima__layout" inert>
+		<section>
+			<h1>
+				Expert Stuidio Ultima
+			</h1>
+			<p id="ultima-turn" role="status"></p>
+			<div class="ultima__board" role="region" aria-label="Игровое поле" tabindex="0">
+				<table aria-label="Темы и стоимость вопросов"></table>
+			</div>
+		</section>
+		<aside aria-label="Счёт команд">
+			<h2>
+				Команды
+			</h2>
+			<ol id="ultima-scores"></ol>
+		</aside>
+	</main>
+	<dialog class="ultima__dialog" aria-labelledby="ultima-dialog-title">
+		<h2 id="ultima-dialog-title"></h2>
+		<div id="ultima-dialog-content"></div>
+	</dialog>
+</body>
+
+</html>

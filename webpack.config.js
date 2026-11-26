@@ -15,7 +15,8 @@ module.exports = (env, argv) => {
 			calendar: './src/calendar.js',
 			collaboration: './src/collab.js',
 			expert: './src/expert.js',
-			gomel: './src/gomel.js'
+			gomel: './src/gomel.js',
+			ultima: './src/ultima.js'
 		},
 		output: {
 			path: path.resolve(__dirname, 'dist'),
@@ -75,6 +76,11 @@ module.exports = (env, argv) => {
 		},
 
 		plugins: [
+			new HtmlWebpackPlugin({
+				template: './src/html/game/ultima.html',
+				filename: 'game/ultima.html',
+				chunks: ['ultima'],
+			}),
 			// Главная страница раздела: /expert-studio/main/
 			new HtmlWebpackPlugin({
 				template: './src/html/index.html',

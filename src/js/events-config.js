@@ -17,7 +17,7 @@ export const EVENTS_CONFIG = {
 	'november-event-1': {
 		eventId: 'november-event-1',
 		title: 'Зимние напитки в меню',
-		registrationEnabled: true,
+		registrationEnabled: false,
 		googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbza-g8Rh1OQZlhZ3Yl1dC1LTaemgsWHTY5HlSrs5QZUi7KHQveqhwRUwQJvAFphN1S5aA/exec'
 	},
 	'november-event-2': {
